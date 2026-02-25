@@ -1,7 +1,10 @@
 import React from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+
+  const navigate = useNavigate();
 
   return (
 
@@ -67,7 +70,12 @@ function Login() {
         <div className="register">
 
           Don’t have an account ?
-          <span> Register</span>
+          
+          <span onClick={() => navigate("/register")}>
+
+            Register
+
+          </span>
 
         </div>
 
