@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+
+  const navigate = useNavigate();
+
+  const [showPopup, setShowPopup] = useState(false);
+
+
+  const handleRegister = () => {
+
+    setShowPopup(true);
+
+  };
+
+
+  const handleOK = () => {
+
+    setShowPopup(false);
+
+    navigate("/");
+
+  };
+
 
   return (
 
@@ -50,7 +72,7 @@ function Register() {
 
         <div className="input-group">
 
-          <label>Enter Email:</label>
+          <label>Email:</label>
 
           <input type="email" />
 
@@ -78,7 +100,7 @@ function Register() {
 
 
 
-        <button className="register-btn">
+        <button className="register-btn" onClick={handleRegister}>
 
           Register
 
@@ -89,12 +111,38 @@ function Register() {
         <div className="login-link">
 
           Already have an account ?
-          <span> Sign In</span>
+
+          <span onClick={() => navigate("/")}>
+            Sign In
+          </span>
 
         </div>
 
 
       </div>
+
+
+
+      {showPopup && (
+
+        <div className="popup">
+
+          <div className="popup-box">
+
+            <h3>TravelSphere says</h3>
+
+            <p>Registration Successful</p>
+
+            <button onClick={handleOK}>
+              OK
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
+
 
     </div>
 

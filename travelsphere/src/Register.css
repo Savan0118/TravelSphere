@@ -53,8 +53,6 @@ html, body {
 
   text-align: center;
   margin-bottom: 20px;
-  font-weight: bold;
-  color: black;
 
 }
 
@@ -63,7 +61,6 @@ html, body {
 .radio-group {
 
   margin-bottom: 15px;
-  color: black;
 
 }
 
@@ -72,7 +69,6 @@ html, body {
 .input-group {
 
   margin-bottom: 12px;
-  color: black;
 
 }
 
@@ -87,13 +83,7 @@ html, body {
 
   border: 1px solid rgba(255,255,255,0.4);
 
-  outline: none;
-
   background: rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(10px);
-
-  color: black;
 
 }
 
@@ -113,8 +103,6 @@ html, body {
   border: none;
   border-radius: 25px;
 
-  font-size: 16px;
-
   cursor: pointer;
 
 }
@@ -124,8 +112,7 @@ html, body {
 .login-link {
 
   text-align: center;
-  margin-top: 15px;
-  color: black;
+  margin-top: 18px;
 
 }
 
@@ -133,8 +120,77 @@ html, body {
 
 .login-link span {
 
+  margin-left: 8px;
+
   font-weight: bold;
-  cursor: pointer;
   text-decoration: underline;
+  cursor: pointer;
+
+}
+
+
+
+/* POPUP CSS ADDED */
+
+.popup {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+.popup-box {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  width: 250px;
+
+}
+
+
+
+.popup-box h3 {
+
+  margin: 0;
+  margin-bottom: 10px;
+
+}
+
+
+
+.popup-box button {
+
+  margin-top: 10px;
+
+  padding: 8px 20px;
+
+  background: #2e7d5b;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
 
 }
