@@ -8,6 +8,14 @@ function Login() {
 
   const [role, setRole] = useState("Traveller");
 
+  const handleLogin = () => {
+
+    // You can add authentication here later
+
+    navigate("/home");
+
+  };
+
   return (
 
     <div className="login-container">
@@ -19,7 +27,8 @@ function Login() {
         </h2>
 
 
-        {/* NEW SEGMENTED CONTROL ADDED */}
+        {/* Segmented Control */}
+
         <div className="segmented-container">
 
           <label className="segmented-label">
@@ -48,26 +57,32 @@ function Login() {
         </div>
 
 
-        {/* YOUR EXISTING INPUTS */}
+
+        {/* Email */}
+
         <div className="input-group">
 
           <label>Enter Email:</label>
 
-          <input type="text" />
+          <input type="text" placeholder="Enter your email" />
 
         </div>
 
 
+
+        {/* Password */}
 
         <div className="input-group">
 
           <label>Password:</label>
 
-          <input type="password" />
+          <input type="password" placeholder="Enter your password" />
 
         </div>
 
 
+
+        {/* Forgot */}
 
         <div className="forgot">
           Forgot Password?
@@ -75,11 +90,18 @@ function Login() {
 
 
 
-        <button className="login-btn">
+        {/* Login Button */}
+
+        <button
+          className="login-btn"
+          onClick={handleLogin}
+        >
           Login
         </button>
 
 
+
+        {/* Register */}
 
         <div className="register">
 

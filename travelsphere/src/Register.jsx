@@ -36,11 +36,12 @@ function Register() {
         </h2>
 
 
-        {/* SEGMENTED CONTROL ADDED */}
+        {/* Register As */}
+
         <div className="segmented-container">
 
           <label className="segmented-label">
-            Register As:
+            Register As :
           </label>
 
           <div className="segmented-control">
@@ -65,40 +66,81 @@ function Register() {
         </div>
 
 
-        {/* EXISTING INPUTS */}
+        {/* Name */}
 
         <div className="input-group">
+
           <label>Name:</label>
-          <input type="text" />
+
+          <input
+            type="text"
+            placeholder="Enter your full name"
+          />
+
         </div>
 
 
+        {/* Mobile */}
+
         <div className="input-group">
+
           <label>Mobile No:</label>
-          <input type="text" />
+
+          <input
+            type="text"
+            placeholder="Enter your mobile number"
+          />
+
         </div>
 
 
+        {/* Email */}
+
         <div className="input-group">
+
           <label>Email:</label>
-          <input type="email" />
+
+          <input
+            type="email"
+            placeholder="Enter your email address"
+          />
+
         </div>
 
 
+        {/* Password */}
+
         <div className="input-group">
+
           <label>Password:</label>
-          <input type="password" />
+
+          <input
+            type="password"
+            placeholder="Enter your password"
+          />
+
         </div>
 
+
+        {/* Confirm Password */}
 
         <div className="input-group">
+
           <label>Confirm Password:</label>
-          <input type="password" />
+
+          <input
+            type="password"
+            placeholder="Re-enter your password"
+          />
+
         </div>
 
 
 
-        <button className="register-btn" onClick={handleRegister}>
+        <button
+        className="register-btn"
+        onClick={handleRegister}
+        >
           Register
         </button>
 
@@ -119,6 +161,8 @@ function Register() {
 
 
 
+      {/* Popup */}
+
       {showPopup && (
 
         <div className="popup">
@@ -129,7 +173,9 @@ function Register() {
 
             <p>Registration Successful</p>
 
-            <button onClick={handleOK}>OK</button>
+            <button onClick={handleOK}>
+              OK
+            </button>
 
           </div>
 
