@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
 
   const navigate = useNavigate();
+
+  const [role, setRole] = useState("Traveller");
 
   return (
 
@@ -17,20 +19,36 @@ function Login() {
         </h2>
 
 
-        <div className="radio-group">
+        {/* NEW SEGMENTED CONTROL ADDED */}
+        <div className="segmented-container">
 
-          <label>Login As :</label>
+          <label className="segmented-label">
+            Login As:
+          </label>
 
-          <input type="radio" name="role" />
-          <span> Admin </span>
+          <div className="segmented-control">
 
-          <input type="radio" name="role" />
-          <span> Traveller </span>
+            <button
+              className={role === "Admin" ? "segment active" : "segment"}
+              onClick={() => setRole("Admin")}
+            >
+              Admin
+            </button>
+
+
+            <button
+              className={role === "Traveller" ? "segment active" : "segment"}
+              onClick={() => setRole("Traveller")}
+            >
+              Traveller
+            </button>
+
+          </div>
 
         </div>
 
 
-
+        {/* YOUR EXISTING INPUTS */}
         <div className="input-group">
 
           <label>Enter Email:</label>
@@ -52,17 +70,13 @@ function Login() {
 
 
         <div className="forgot">
-
           Forgot Password?
-
         </div>
 
 
 
         <button className="login-btn">
-
           Login
-
         </button>
 
 
@@ -70,11 +84,9 @@ function Login() {
         <div className="register">
 
           Don’t have an account ?
-          
+
           <span onClick={() => navigate("/register")}>
-
             Register
-
           </span>
 
         </div>

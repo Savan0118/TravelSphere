@@ -6,6 +6,8 @@ function Register() {
 
   const navigate = useNavigate();
 
+  const [role, setRole] = useState("Traveller");
+
   const [showPopup, setShowPopup] = useState(false);
 
 
@@ -17,8 +19,6 @@ function Register() {
 
 
   const handleOK = () => {
-
-    setShowPopup(false);
 
     navigate("/");
 
@@ -36,74 +36,70 @@ function Register() {
         </h2>
 
 
-        <div className="radio-group">
+        {/* SEGMENTED CONTROL ADDED */}
+        <div className="segmented-container">
 
-          <label>Register As :</label>
+          <label className="segmented-label">
+            Register As:
+          </label>
 
-          <input type="radio" name="role" />
-          <span> Admin </span>
+          <div className="segmented-control">
 
-          <input type="radio" name="role" />
-          <span> Traveller </span>
+            <button
+              className={role === "Admin" ? "segment active" : "segment"}
+              onClick={() => setRole("Admin")}
+            >
+              Admin
+            </button>
+
+
+            <button
+              className={role === "Traveller" ? "segment active" : "segment"}
+              onClick={() => setRole("Traveller")}
+            >
+              Traveller
+            </button>
+
+          </div>
 
         </div>
 
 
+        {/* EXISTING INPUTS */}
 
         <div className="input-group">
-
           <label>Name:</label>
-
           <input type="text" />
-
         </div>
 
 
-
         <div className="input-group">
-
           <label>Mobile No:</label>
-
           <input type="text" />
-
         </div>
 
 
-
         <div className="input-group">
-
           <label>Email:</label>
-
           <input type="email" />
-
         </div>
 
 
-
         <div className="input-group">
-
           <label>Password:</label>
-
           <input type="password" />
-
         </div>
 
 
-
         <div className="input-group">
-
           <label>Confirm Password:</label>
-
           <input type="password" />
-
         </div>
 
 
 
         <button className="register-btn" onClick={handleRegister}>
-
           Register
-
         </button>
 
 
@@ -133,9 +129,7 @@ function Register() {
 
             <p>Registration Successful</p>
 
-            <button onClick={handleOK}>
-              OK
-            </button>
+            <button onClick={handleOK}>OK</button>
 
           </div>
 
