@@ -36,8 +36,6 @@ function Register() {
         </h2>
 
 
-        {/* Register As */}
-
         <div className="segmented-container">
 
           <label className="segmented-label">
@@ -66,85 +64,67 @@ function Register() {
         </div>
 
 
-        {/* Name */}
 
         <div className="input-group">
 
           <label>Name:</label>
 
-          <input
-            type="text"
-            placeholder="Enter your full name"
-          />
+          <input type="text" placeholder="Enter your full name"/>
 
         </div>
 
 
-        {/* Mobile */}
 
         <div className="input-group">
 
           <label>Mobile No:</label>
 
-          <input
-            type="text"
-            placeholder="Enter your mobile number"
-          />
+          <input type="text" placeholder="Enter your mobile number"/>
 
         </div>
 
 
-        {/* Email */}
 
         <div className="input-group">
 
           <label>Email:</label>
 
-          <input
-            type="email"
-            placeholder="Enter your email address"
-          />
+          <input type="email" placeholder="Enter your email address"/>
 
         </div>
 
 
-        {/* Password */}
 
         <div className="input-group">
 
           <label>Password:</label>
 
-          <input
-            type="password"
-            placeholder="Enter your password"
-          />
+          <input type="password" placeholder="Enter your password"/>
 
         </div>
 
 
-        {/* Confirm Password */}
 
         <div className="input-group">
 
           <label>Confirm Password:</label>
 
-          <input
-            type="password"
-            placeholder="Re-enter your password"
-          />
+          <input type="password" placeholder="Re-enter your password"/>
 
         </div>
 
 
 
         <button
-        className="register-btn"
-        onClick={handleRegister}
+          className="register-btn"
+          onClick={handleRegister}
         >
           Register
         </button>
 
 
+
+        {/* CLICKABLE SIGN IN */}
 
         <div className="login-link">
 
@@ -160,8 +140,6 @@ function Register() {
       </div>
 
 
-
-      {/* Popup */}
 
       {showPopup && (
 
@@ -182,7 +160,6 @@ function Register() {
         </div>
 
       )}
-
 
     </div>
 
