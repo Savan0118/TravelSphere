@@ -104,9 +104,16 @@ function Search() {
 
                     <div className="banner-text">
 
-                        <h1>Find Your Next Adventure</h1>
+                        {/* ✅ UPDATED PROFESSIONAL TITLE */}
+                        <h1>
+                            Discover Exceptional Destinations Across the Globe
+                        </h1>
 
-                        <p>Explore the world with ease</p>
+
+                        {/* ✅ UPDATED PROFESSIONAL SUBTITLE */}
+                        <p>
+                            Search, compare, and select the perfect destination tailored to your travel dreams with TravelSphere
+                        </p>
 
                     </div>
 
@@ -124,7 +131,7 @@ function Search() {
 
                         <div className="search-pill-item">
 
-                            Where to ?
+                            Choose Destination
 
                             <span className="pill-icon">˅</span>
 
@@ -136,7 +143,7 @@ function Search() {
 
                         <div className="search-pill-item">
 
-                            📅 Date to travel
+                            Select Travel Date
 
                         </div>
 
@@ -146,7 +153,7 @@ function Search() {
 
                         <div className="search-pill-item">
 
-                            👤 2 Adults
+                            Guests : 2 Adults
 
                             <span className="pill-icon">˅</span>
 
@@ -155,7 +162,7 @@ function Search() {
 
                         <button className="search-pill-btn">
 
-                            Search
+                            Explore Now
 
                         </button>
 
@@ -171,15 +178,34 @@ function Search() {
                 <div className="content-area">
 
 
-                    <h2>Search Destinations</h2>
+                    {/* ✅ UPDATED TITLE */}
+                    <h2 style={{
+                        fontSize: "24px",
+                        fontWeight: "600",
+                        marginBottom: "5px"
+                    }}>
+                        Explore Premium Travel Destinations
+                    </h2>
 
 
-                    {/* ✅ ADDED SEARCH BAR HERE */}
+                    {/* ✅ NEW PROFESSIONAL SUBTEXT */}
+                    <p style={{
+                        marginTop: "0px",
+                        marginBottom: "20px",
+                        color: "#555",
+                        fontSize: "14px"
+                    }}>
+                        Use advanced search and filters to discover destinations that match your preferences, budget, and travel style.
+                    </p>
+
+
+
+                    {/* SEARCH BAR */}
                     <div className="top-search-bar-container">
 
                         <input
                             type="text"
-                            placeholder="Search destinations..."
+                            placeholder="Search destinations, cities, landmarks..."
                             className="top-search-bar"
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
@@ -192,16 +218,28 @@ function Search() {
                     <div className="search-categories">
 
 
-                        <button className="search-cat-btn">Villages</button>
+                        <button className="search-cat-btn">
+                            Scenic Villages
+                        </button>
 
-                        <button className="search-cat-btn">Beaches</button>
-
-                        <button className="search-cat-btn">Mountains</button>
-
-                        <button className="search-cat-btn">Temples</button>
 
                         <button className="search-cat-btn">
-                            Other Places ˅
+                            Coastal Beaches
+                        </button>
+
+
+                        <button className="search-cat-btn">
+                            Mountain Escapes
+                        </button>
+
+
+                        <button className="search-cat-btn">
+                            Spiritual Places
+                        </button>
+
+
+                        <button className="search-cat-btn">
+                            Explore More ˅
                         </button>
 
 

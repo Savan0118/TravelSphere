@@ -168,3 +168,5 @@ function Register() {
 }
 
 export default Register;
+
+/* This is Register.jsx */
