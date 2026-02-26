@@ -1,0 +1,266 @@
+/* Overrides specifically for Search page matching Home.css standards */
+
+.search-banner {
+    margin-bottom: 20px;
+}
+
+
+/* FIX MAIN OVERFLOW */
+.main {
+    overflow-x: hidden;
+}
+
+
+/* FIX CONTENT WIDTH */
+.content-area {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+/* SEARCH PILL */
+
+.search-bar-pill {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background-color: #e4e6e4;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 5px 5px 5px 25px;
+
+    border-radius: 25px;
+
+    gap: 20px;
+
+    z-index: 2;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    white-space: nowrap;
+
+}
+
+
+.search-pill-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    color: #1a1a1a;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.pill-icon {
+
+    font-size: 12px;
+
+    margin-left: 5px;
+
+    color: #666;
+
+}
+
+
+.pill-divider {
+
+    width: 1px;
+
+    height: 20px;
+
+    background-color: #ccc;
+
+}
+
+
+.search-pill-btn {
+
+    background-color: #2a8153;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 20px;
+
+    padding: 10px 30px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+}
+
+
+.search-pill-btn:hover {
+
+    background: #1a4f36;
+
+}
+
+
+
+/* CATEGORY BUTTONS */
+
+.search-categories {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.search-cat-btn {
+
+    background-color: #2a8153;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 30px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+}
+
+
+.search-cat-btn:hover {
+
+    background-color: #1a4f36;
+
+}
+
+
+
+/* SEARCH LIST */
+
+.search-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+
+.search-card {
+
+    height: 140px;
+
+}
+
+
+.search-card-info p {
+
+    max-width: 90%;
+
+    font-size: 13px !important;
+
+}
+
+
+.search-price-tag {
+
+    background-color: #e4e6e4 !important;
+
+    border-radius: 8px !important;
+
+    min-width: 250px;
+
+}
+
+
+.search-view-btn {
+
+    background-color: #e4e6e4 !important;
+
+    color: #1a1a1a !important;
+
+}
+
+
+.search-view-btn:hover {
+
+    background-color: white !important;
+
+}
+
+
+
+/* TOP SEARCH BAR FIXED */
+
+.top-search-bar-container {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+}
+
+
+.top-search-bar {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+
+    outline: none;
+
+    background-color: #e4e6e4;
+
+}
+
+
+.top-search-bar:focus {
+
+    border-color: #2a8153;
+
+}

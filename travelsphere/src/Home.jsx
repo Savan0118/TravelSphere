@@ -33,12 +33,18 @@ function Home() {
           <ul className="menu">
 
 
-            <li className="active">
+            <li
+              className="active"
+              onClick={() => navigate("/home")}
+            >
               <span style={{ fontSize: '18px' }}>🏠</span> Home
             </li>
 
 
-            <li>
+            {/* ✅ ONLY THIS LINE ADDED */}
+            <li
+              onClick={() => navigate("/search")}
+            >
               <span style={{ fontSize: '18px' }}>🔍</span> Explore
             </li>
 
@@ -65,8 +71,6 @@ function Home() {
 
 
 
-
-        {/* LOGOUT */}
         <div className="logout-container">
 
 
@@ -75,20 +79,16 @@ function Home() {
             onClick={() => navigate("/")}
           >
 
-
             <span style={{ fontSize: '20px' }}>
               ⏻
             </span>
 
-
             Sign Out
-
 
           </div>
 
 
         </div>
-
 
 
       </div>
@@ -137,8 +137,7 @@ function Home() {
         <div className="content-area">
 
 
-
-          {/* DESTINATIONS */}
+          {/* POPULAR DESTINATIONS */}
           <div className="destinations-header">
 
 
@@ -160,7 +159,6 @@ function Home() {
           <div className="cards">
 
 
-
             <div className="card">
 
 
@@ -172,10 +170,7 @@ function Home() {
               <div className="card-info">
 
 
-                <h3>
-                  Amber Fort
-                </h3>
-
+                <h3>Amber Fort</h3>
 
                 <p className="location">
                   Jaipur, Rajasthan
@@ -211,10 +206,7 @@ function Home() {
               <div className="card-info">
 
 
-                <h3>
-                  Gateway of India
-                </h3>
-
+                <h3>Gateway of India</h3>
 
                 <p className="location">
                   Mumbai, Maharashtra
@@ -250,10 +242,7 @@ function Home() {
               <div className="card-info">
 
 
-                <h3>
-                  Kashmir
-                </h3>
-
+                <h3>Kashmir</h3>
 
                 <p className="location">
                   Jammu & Kashmir
@@ -276,7 +265,6 @@ function Home() {
             </div>
 
 
-
           </div>
 
 
@@ -284,10 +272,7 @@ function Home() {
 
 
           {/* PACKAGES */}
-          <h2>
-            Featured Packages
-          </h2>
-
+          <h2>Featured Packages</h2>
 
 
 
@@ -300,9 +285,7 @@ function Home() {
             <div className="package-info">
 
 
-              <h3>
-                Ladakh Expedition
-              </h3>
+              <h3>Ladakh Expedition</h3>
 
 
               <p>
@@ -317,14 +300,9 @@ function Home() {
                 <div className="price-tag">
 
 
-                  <span>
-                    7 Days
-                  </span>
+                  <span>7 Days</span>
 
-
-                  <span>
-                    ₹70,000
-                  </span>
+                  <span>₹70,000</span>
 
 
                 </div>
@@ -343,7 +321,6 @@ function Home() {
 
 
           </div>
-
 
 
         </div>
