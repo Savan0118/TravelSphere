@@ -63,6 +63,9 @@ function Home() {
               <span style={{ fontSize: '18px' }}>ℹ️</span> About TravelSphere
             </li>
 
+            <li onClick={() => navigate("/weather")}>
+              <span style={{ fontsize: '18px' }}>🌦️</span> Weather
+            </li>
 
           </ul>
 

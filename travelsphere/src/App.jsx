@@ -2,6 +2,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
 import Search from "./Search";   // ✅ ADD THIS
+import Weather from "./Weather";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,6 +21,8 @@ function App() {
         <Route path="/home" element={<Home />} />
 
         <Route path="/search" element={<Search />} />   {/* ✅ ADD THIS */}
+
+        <Route path="/weather" element={<Weather />} />
 
       </Routes>
 
