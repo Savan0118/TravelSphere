@@ -8,10 +8,12 @@ function Weather() {
   const navigate = useNavigate();
 
   const [city, setCity] = useState("");
+
   const [weatherData, setWeatherData] = useState(null);
+
   const [error, setError] = useState("");
 
-  const API_KEY = "2NV3GDRL7VMJEQGRCLWKPP5D8";
+  const API_KEY = "4cda19cb02f64ec9ae974737262702";
 
 
   const getWeather = async () => {
@@ -19,7 +21,9 @@ function Weather() {
     if (city === "") {
 
       setError("Please enter city name");
+
       setWeatherData(null);
+
       return;
 
     }
@@ -29,17 +33,21 @@ function Weather() {
       setError("");
 
       const response = await fetch(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&contentType=json`
+
+        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`
+
       );
 
       const data = await response.json();
 
       if (data.error) {
 
-        setError("City not found");
+        setError(data.error.message);
+
         setWeatherData(null);
 
       }
+
       else {
 
         setWeatherData(data);
@@ -47,6 +55,7 @@ function Weather() {
       }
 
     }
+
     catch {
 
       setError("Failed to fetch weather");
@@ -62,7 +71,8 @@ function Weather() {
     <div className="home">
 
 
-      {/* SIDEBAR — EXACT SAME AS HOME.JSX */}
+      {/* SIDEBAR */}
+
       <div className="sidebar">
 
 
@@ -70,13 +80,18 @@ function Weather() {
 
 
           <h2 className="logo">
+
             TravelSphere
+
           </h2>
 
 
           <p className="tagline">
+
             Discover. Plan. Experience.<br />
+
             Your gateway to unforgettable journeys
+
           </p>
 
 
@@ -84,41 +99,50 @@ function Weather() {
           <ul className="menu">
 
 
-            <li
-              onClick={() => navigate("/home")}
-            >
+            <li onClick={() => navigate("/home")}>
+
               <span style={{ fontSize: '18px' }}>🏠</span> Home
+
             </li>
 
 
-            <li
-              onClick={() => navigate("/search")}
-            >
+
+            <li onClick={() => navigate("/search")}>
+
               <span style={{ fontSize: '18px' }}>🔍</span> Explore
+
             </li>
 
 
+
             <li>
+
               <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
+
             </li>
 
 
+
             <li>
+
               <span style={{ fontSize: '18px' }}>💰</span> Budget Planner
+
             </li>
+
 
 
             <li>
+
               <span style={{ fontSize: '18px' }}>ℹ️</span> About TravelSphere
+
             </li>
 
 
-            {/* ONLY ACTIVE CLASS DIFFERENCE */}
-            <li
-              className="active"
-              onClick={() => navigate("/weather")}
-            >
+
+            <li className="active">
+
               <span style={{ fontSize: '18px' }}>🌦️</span> Weather
+
             </li>
 
 
@@ -132,16 +156,14 @@ function Weather() {
         <div className="logout-container">
 
 
-          <div
-            className="logout"
-            onClick={() => navigate("/")}
-          >
+          <div className="logout" onClick={() => navigate("/")}>
 
-            <span style={{ fontSize: '20px' }}>
-              ⏻
-            </span>
+
+            <span style={{ fontSize: '20px' }}>⏻</span>
+
 
             Sign Out
+
 
           </div>
 
@@ -153,9 +175,15 @@ function Weather() {
 
 
 
+
+
       {/* MAIN */}
+
       <div className="main">
 
+
+
+        {/* BANNER */}
 
         <div className="banner weather-banner">
 
@@ -164,12 +192,16 @@ function Weather() {
 
 
             <h1>
+
               Check Weather Before Your Journey
+
             </h1>
 
 
             <p>
+
               Get real-time weather insights to plan your perfect trip confidently
+
             </p>
 
 
@@ -178,9 +210,13 @@ function Weather() {
 
 
           <img
+
             src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png"
+
             className="profile"
+
             alt="Weather"
+
           />
 
 
@@ -188,34 +224,54 @@ function Weather() {
 
 
 
+
+
+        {/* CONTENT */}
+
         <div className="content-area">
 
 
-          <div className="weather-layout">
+
+          <div className="weather-layout" style={{ display: "block" }}>
+
 
 
             <div className="weather-left">
 
 
+
               <h2>
+
                 Weather Forecast
+
               </h2>
+
 
 
               <div className="weather-search-box">
 
 
+
                 <input
+
                   type="text"
+
                   placeholder="Enter city name (example: Rajkot)"
+
                   value={city}
+
                   onChange={(e) => setCity(e.target.value)}
+
                 />
 
 
+
                 <button onClick={getWeather}>
+
                   Get Weather
+
                 </button>
+
 
 
               </div>
@@ -225,108 +281,253 @@ function Weather() {
               {error && (
 
                 <p className="weather-error">
+
                   {error}
+
                 </p>
 
               )}
 
 
 
+
+
               {weatherData && (
 
-                <div className="weather-card">
+                <>
 
 
-                  <h3>
-                    {weatherData.address}
-                  </h3>
+
+                  {/* CURRENT WEATHER */}
+
+                  <div className="weather-card">
 
 
-                  <div className="weather-details">
+
+                    <h3>
+
+                      {weatherData.location.name}
+
+                    </h3>
 
 
-                    <div>
-                      🌡 Temperature
-                      <span>
-                        {weatherData.currentConditions.temp} °C
-                      </span>
+
+                    <div className="weather-details">
+
+
+
+                      <div>
+
+                        🌡 Temperature
+
+                        <span>
+
+                          {weatherData.current.temp_c} °C
+
+                        </span>
+
+                      </div>
+
+
+
+                      <div>
+
+                        ☁ Condition
+
+                        <span>
+
+                          {weatherData.current.condition.text}
+
+                        </span>
+
+                      </div>
+
+
+
+                      <div>
+
+                        💧 Humidity
+
+                        <span>
+
+                          {weatherData.current.humidity} %
+
+                        </span>
+
+                      </div>
+
+
+
+                      <div>
+
+                        🌬 Wind Speed
+
+                        <span>
+
+                          {weatherData.current.wind_kph} km/h
+
+                        </span>
+
+                      </div>
+
+
+
                     </div>
 
-
-                    <div>
-                      ☁ Condition
-                      <span>
-                        {weatherData.currentConditions.conditions}
-                      </span>
-                    </div>
-
-
-                    <div>
-                      💧 Humidity
-                      <span>
-                        {weatherData.currentConditions.humidity} %
-                      </span>
-                    </div>
-
-
-                    <div>
-                      🌬 Wind Speed
-                      <span>
-                        {weatherData.currentConditions.windspeed} km/h
-                      </span>
-                    </div>
 
 
                   </div>
 
 
-                </div>
+
+
+
+                  {/* HOURLY FORECAST */}
+
+                  <div className="weather-card">
+
+
+
+                    <h3>
+
+                      Today Forecast
+
+                    </h3>
+
+
+
+                    <div className="hourly-row">
+
+
+
+                      {
+
+                        weatherData.forecast.forecastday[0].hour
+
+                        .slice(0, 6)
+
+                        .map((h, i) => (
+
+
+
+                          <div key={i}>
+
+
+
+                            {h.time.split(" ")[1]}
+
+
+
+                            <br />
+
+
+
+                            {h.temp_c}°C
+
+
+
+                          </div>
+
+
+
+                        ))
+
+                      }
+
+
+
+                    </div>
+
+
+
+                  </div>
+
+
+
+
+
+                  {/* WEEKLY FORECAST */}
+
+                  <div className="weather-card">
+
+
+
+                    <h3>
+
+                      7 Day Forecast
+
+                    </h3>
+
+
+
+                    {
+
+                      weatherData.forecast.forecastday.map((day, i) => (
+
+
+
+                        <div className="weekly-row" key={i}>
+
+
+
+                          <span>
+
+                            {day.date}
+
+                          </span>
+
+
+
+                          <span>
+
+                            {day.day.avgtemp_c}°C
+
+                          </span>
+
+
+
+                          <span>
+
+                            {day.day.condition.text}
+
+                          </span>
+
+
+
+                        </div>
+
+
+
+                      ))
+
+                    }
+
+
+
+                  </div>
+
+
+
+                </>
 
               )}
 
 
-            </div>
-
-
-
-            <div className="weather-right">
-
-
-              <h2>
-                Travel Weather Tips
-              </h2>
-
-
-              <div className="tips-card">
-                🌤 Always check forecast before travelling
-              </div>
-
-
-              <div className="tips-card">
-                🧥 Carry proper clothes
-              </div>
-
-
-              <div className="tips-card">
-                🌧 Rain may affect plans
-              </div>
-
-
-              <div className="tips-card">
-                🌡 Avoid extreme weather travel
-              </div>
-
 
             </div>
+
 
 
           </div>
 
 
+
         </div>
 
 
+
       </div>
+
 
 
     </div>

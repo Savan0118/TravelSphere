@@ -175,7 +175,7 @@
 
   margin-top: 20px;
 
-  width: 400px;
+  width: 100%;
 
 }
 
@@ -252,5 +252,63 @@
 .tips-card:hover {
 
   background: #d6d8d6;
+
+}
+
+
+
+/* ========================= */
+/* NEW: HOURLY FORECAST */
+/* ========================= */
+
+.hourly-row {
+
+  display: flex;
+
+  gap: 15px;
+
+  margin-top: 15px;
+
+}
+
+
+
+.hourly-row div {
+
+  background: white;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  min-width: 70px;
+
+}
+
+
+
+/* ========================= */
+/* NEW: WEEKLY FORECAST */
+/* ========================= */
+
+.weekly-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  background: white;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  margin-top: 10px;
+
+  font-size: 14px;
 
 }
