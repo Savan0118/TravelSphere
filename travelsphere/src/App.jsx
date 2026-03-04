@@ -23,7 +23,6 @@ function App() {
         <Route path="/search" element={<Search />} />   {/* ✅ ADD THIS */}
 
         <Route path="/package/:id" element={<PackageDetails />} />
-
       </Routes>
 
     </BrowserRouter>
