@@ -1,0 +1,58 @@
+.budget-banner {
+  background-image: url("/Images/Home_Img.png");
+}
+
+.budget-card {
+  background: #e4e6e4;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 40px;
+}
+
+.grid-2 label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.grid-2 input,
+.grid-2 select {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background: white;
+  outline: none;
+}
+
+.generate-btn {
+  margin-top: 40px;
+  width: 100%;
+  padding: 16px;
+  background: #2a8153;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  background: #1a4f36;
+}
+
+.result-box {
+  margin-top: 30px;
+  background: #2a8153;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+}
