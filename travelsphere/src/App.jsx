@@ -1,8 +1,10 @@
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
-import Search from "./Search";   // ✅ ADD THIS
+import Search from "./Search";   
 import Weather from "./Weather";
+import BudgetPlanner from "./BudgetPlanner";
+import BudgetResult from "./BudgetResult";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,9 +22,13 @@ function App() {
 
         <Route path="/home" element={<Home />} />
 
-        <Route path="/search" element={<Search />} />   {/* ✅ ADD THIS */}
+        <Route path="/search" element={<Search />} />   
 
         <Route path="/weather" element={<Weather />} />
+
+        <Route path="/budget" element={<BudgetPlanner />} />
+
+        <Route path="/budget-result" element={<BudgetResult />} />
 
       </Routes>
 

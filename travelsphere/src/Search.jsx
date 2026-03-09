@@ -55,7 +55,7 @@ function Search() {
                         </li>
 
 
-                        <li>
+                        <li onClick={() => navigate("/budget")}>
                             <span style={{ fontSize: '18px' }}>💰</span> Budget Planner
                         </li>
 
