@@ -132,8 +132,16 @@ function BudgetPlanner() {
               <span style={{ fontSize: "18px" }}>🔍</span> Explore
             </li>
 
+            <li>
+              <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
+            </li>
+
             <li className="active">
               <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
+            </li>
+
+            <li>
+              <span style={{ fontSize: '18px' }}>ℹ️</span> About TravelSphere
             </li>
 
             <li onClick={() => navigate("/weather")}>
