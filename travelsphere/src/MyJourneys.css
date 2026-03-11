@@ -1,0 +1,45 @@
+/* Banner */
+.journeys-banner {
+  background-image: url("/Images/Home_Img.png");
+}
+
+
+/* Title */
+.journeys-title {
+  margin-bottom: 20px;
+}
+
+
+/* Layout */
+.journey-list {
+  display: flex;
+  gap: 20px;
+}
+
+
+/* Card */
+.journey-card {
+  background: #e4e6e4;
+  padding: 20px;
+  border-radius: 16px;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.journey-card:hover {
+  transform: translateY(-5px);
+}
+
+.journey-card h3 {
+  margin: 0 0 5px 0;
+}
+
+.journey-card p {
+  margin: 0 0 10px 0;
+  color: #555;
+}
+
+.journey-card span {
+  font-weight: 600;
+  color: #2a8153;
+}

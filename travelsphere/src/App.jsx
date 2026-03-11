@@ -5,6 +5,7 @@ import Search from "./Search";
 import Weather from "./Weather";
 import BudgetPlanner from "./BudgetPlanner";
 import BudgetResult from "./BudgetResult";
+import MyJourneys from "./MyJourneys";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -30,6 +31,7 @@ function App() {
 
         <Route path="/budget-result" element={<BudgetResult />} />
 
+        <Route path="/journeys" element={<MyJourneys />} />
       </Routes>
 
     </BrowserRouter>

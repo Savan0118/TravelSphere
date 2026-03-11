@@ -49,7 +49,9 @@ function Home() {
             </li>
 
 
-            <li>
+            <li
+              onClick={() => navigate("/journeys")}
+            >
               <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
             </li>
 
