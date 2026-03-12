@@ -1,116 +1,125 @@
 import React from "react";
-import "./Home.css";
 import "./MyJourneys.css";
 import { useNavigate } from "react-router-dom";
 
-function MyJourneys() {
+function MyJourneys(){
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
-  return (
-    <div className="home">
+return(
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
+<div className="journey-page">
 
-        <div className="sidebar-top">
+{/* SIDEBAR */}
+<div className="journey-sidebar">
 
-          <h2 className="logo">TravelSphere</h2>
+<h2 className="journey-logo">TravelSphere</h2>
 
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
+<p className="journey-tag">
+Your best companion to travel around the world
+</p>
 
-          <ul className="menu">
+<ul className="journey-menu">
 
-            <li onClick={() => navigate("/home")}>
-              <span style={{ fontSize: "18px" }}>🏠</span> Home
-            </li>
+<li onClick={()=>navigate("/home")}>🏠 Home</li>
+<li onClick={()=>navigate("/search")}>🔎 Search</li>
+<li className="active">🗺️ My Journeys</li>
+<li onClick={()=>navigate("/budget")}>💰 Budget Planner</li>
+<li onClick={()=>navigate("/about")}>ℹ️ About Us</li>
+<li onClick={()=>navigate("/weather")}>🌦️ Weather</li>
 
-            <li onClick={() => navigate("/search")}>
-              <span style={{ fontSize: "18px" }}>🔍</span> Explore
-            </li>
+</ul>
 
-            <li
-              className="active"
-              onClick={() => navigate("/journeys")}
-            >
-              <span style={{ fontSize: "18px" }}>🗺️</span> My Journeys
-            </li>
+<div className="journey-logout" onClick={()=>navigate("/")}>
+⏻ Log Out
+</div>
 
-            <li onClick={() => navigate("/budget")}>
-              <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontSize: "18px" }}>🌦️</span> Weather
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div
-            className="logout"
-            onClick={() => navigate("/")}
-          >
-            <span style={{ fontSize: "20px" }}>⏻</span>
-            Sign Out
-          </div>
-        </div>
-
-      </div>
+</div>
 
 
-      {/* MAIN */}
-      <div className="main">
+{/* MAIN */}
+<div className="journey-main">
 
-        {/* BANNER */}
-        <div className="banner journeys-banner">
+<div className="journey-banner">
 
-          <div className="banner-text">
-            <h1>Your Travelled Destinations OR Dream Completed Trips</h1>
-            <p>Track and manage all your saved trips in one place</p>
-          </div>
+<h1>Completed My Adventure</h1>
+<p>Explore the world with ease</p>
 
-        </div>
+</div>
 
 
-        {/* CONTENT */}
-        <div className="content-area">
+<div className="journey-content">
 
-          <h2 className="journeys-title">Saved Trips</h2>
+<h2 className="section-title">My Trips</h2>
 
-          <div className="journey-list">
 
-            <div className="journey-card">
-              <h3>Ladakh Adventure</h3>
-              <p>7 Days Himalayan Expedition</p>
-              <span>Budget ₹70,000</span>
-            </div>
+{/* CARD 1 */}
+<div className="trip-card">
 
-            <div className="journey-card">
-              <h3>Varanasi Spiritual Tour</h3>
-              <p>5 Days Cultural Experience</p>
-              <span>Budget ₹14,000</span>
-            </div>
+<span className="status upcoming">Upcoming</span>
 
-            <div className="journey-card">
-              <h3>Taj Mahal Visit</h3>
-              <p>2 Days Heritage Trip</p>
-              <span>Budget ₹2,500</span>
-            </div>
+<img src="/Images/Home_Img.png" />
 
-          </div>
+<div className="trip-info">
 
-        </div>
+<h3>Ladakh</h3>
+<p>15 Apr 2024 — 21 Apr 2024</p>
+<p className="location">📍 Leh, Ladakh</p>
 
-      </div>
+<button className="view-btn">View Details</button>
 
-    </div>
-  );
+</div>
+
+</div>
+
+
+{/* CARD 2 */}
+<div className="trip-card">
+
+<span className="status upcoming">Upcoming</span>
+
+<img src="/Images/Home_Img.png" />
+
+<div className="trip-info">
+
+<h3>Varanasi (Kashi)</h3>
+<p>2 May 2024 — 6 May 2024</p>
+<p className="location">📍 Kochi, Kerala</p>
+
+<button className="view-btn">View Details</button>
+
+</div>
+
+</div>
+
+
+{/* CARD 3 */}
+<div className="trip-card">
+
+<span className="status completed">Completed</span>
+
+<img src="/Images/Home_Img.png" />
+
+<div className="trip-info">
+
+<h3>Taj Mahal</h3>
+<p>15 Jan 2025 — 22 Jan 2025</p>
+<p className="location">📍 Agra, Uttar Pradesh</p>
+
+<button className="view-btn">View Details</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+)
+
 }
 
 export default MyJourneys;

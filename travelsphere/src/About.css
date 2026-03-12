@@ -1,0 +1,39 @@
+.about-scroll{
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.about-banner{
+  background-image: url("/Images/Home_Img.png");
+}
+
+.about-card{
+  background:#e4e6e4;
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:25px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.about-grid{
+  display:flex;
+  gap:20px;
+}
+
+.about-box{
+  flex:1;
+  background:#e4e6e4;
+  padding:25px;
+  border-radius:18px;
+}
+
+.about-box h3{
+  margin-top:0;
+  margin-bottom:10px;
+}
+
+.about-box p{
+  font-size:14px;
+  line-height:1.6;
+}

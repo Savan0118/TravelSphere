@@ -132,7 +132,7 @@ function BudgetPlanner() {
               <span style={{ fontSize: "18px" }}>🔍</span> Explore
             </li>
 
-            <li>
+            <li onClick={() => navigate("/journeys")}>
               <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
             </li>
 
@@ -140,8 +140,8 @@ function BudgetPlanner() {
               <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
             </li>
 
-            <li>
-              <span style={{ fontSize: '18px' }}>ℹ️</span> About TravelSphere
+            <li onClick={() => navigate("/about")}>
+              <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
             </li>
 
             <li onClick={() => navigate("/weather")}>
@@ -153,20 +153,9 @@ function BudgetPlanner() {
         </div>
 
         <div className="logout-container">
-
-          <div
-            className="logout"
-            onClick={() => navigate("/")}
-          >
-
-            <span style={{ fontSize: "20px" }}>
-              ⏻
-            </span>
-
-            Sign Out
-
+          <div className="logout" onClick={() => navigate("/")}>
+            ⏻ Log Out
           </div>
-
         </div>
 
       </div>

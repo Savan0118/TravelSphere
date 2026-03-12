@@ -115,7 +115,9 @@ function Weather() {
 
 
 
-            <li>
+            <li
+              onClick={() => navigate("/journeys")}
+            >
 
               <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
 
@@ -130,9 +132,11 @@ function Weather() {
 
 
 
-            <li>
+            <li
+              onClick={() => navigate("/about")}
+            >
 
-              <span style={{ fontSize: '18px' }}>ℹ️</span> About TravelSphere
+              <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
 
             </li>
 
@@ -153,20 +157,9 @@ function Weather() {
 
 
         <div className="logout-container">
-
-
           <div className="logout" onClick={() => navigate("/")}>
-
-
-            <span style={{ fontSize: '20px' }}>⏻</span>
-
-
-            Sign Out
-
-
+            ⏻ Log Out
           </div>
-
-
         </div>
 
 

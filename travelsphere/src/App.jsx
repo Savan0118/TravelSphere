@@ -6,6 +6,7 @@ import Weather from "./Weather";
 import BudgetPlanner from "./BudgetPlanner";
 import BudgetResult from "./BudgetResult";
 import MyJourneys from "./MyJourneys";
+import About from "./About";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -32,6 +33,9 @@ function App() {
         <Route path="/budget-result" element={<BudgetResult />} />
 
         <Route path="/journeys" element={<MyJourneys />} />
+
+        <Route path="/about" element={<About />} />
+        
       </Routes>
 
     </BrowserRouter>
