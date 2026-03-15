@@ -279,10 +279,8 @@ function Search() {
                                     </div>
 
 
-                                    <button>
-
-                                        View Details
-
+                                    <button onClick={()=>navigate("/description/ladakh")}>
+                                    View Details
                                     </button>
 
 
@@ -332,10 +330,8 @@ function Search() {
                                     </div>
 
 
-                                    <button>
-
-                                        View Details
-
+                                    <button onClick={()=>navigate("/description/varanasi")}>
+                                     View Details
                                     </button>
 
 
@@ -385,10 +381,8 @@ function Search() {
                                     </div>
 
 
-                                    <button>
-
-                                        View Details
-
+                                    <button onClick={()=>navigate("/description/tajmahal")}>
+                                     View Details
                                     </button>
 
 

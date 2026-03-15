@@ -7,6 +7,7 @@ import BudgetPlanner from "./BudgetPlanner";
 import BudgetResult from "./BudgetResult";
 import MyJourneys from "./MyJourneys";
 import About from "./About";
+import Description from "./Description";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -35,6 +36,10 @@ function App() {
         <Route path="/journeys" element={<MyJourneys />} />
 
         <Route path="/about" element={<About />} />
+        
+        <Route path="/description/:id" element={<Description />} />
+
+        <Route path="/booking/:id" element={<Booking />} />
         
       </Routes>
 

@@ -1,210 +1,126 @@
-.journey-page{
-display:flex;
-height:100vh;
-background:#1c1c1c;
-font-family:Segoe UI;
+/* SAME LAYOUT AS HOME */
+
+.main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
 }
 
-
-/* SIDEBAR */
-
-.journey-sidebar{
-width:250px;
-background: #1a4f36;
-color:white;
-padding:30px 20px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+.banner{
+  height:240px;
+  background-image:url("/Images/Home_Img.png");
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  border-bottom-right-radius:20px;
 }
 
-.journey-logo{
-text-align:center;
-margin:0;
-font-size:22px;
-font-weight:700;
-margin-bottom: 5px;
+.banner::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(240,241,240,.8) 0%,
+    rgba(240,241,240,.4) 50%,
+    rgba(240,241,240,0) 100%
+  );
+  border-bottom-right-radius:20px;
 }
 
-.journey-tag{
-text-align:center;
-font-size:11px;
-opacity:.7;
-margin-bottom:30px;
+.banner-text{
+  position:relative;
+  padding:50px 40px;
 }
 
-.journey-menu{
-list-style:none;
-padding:0;
-margin:0;
+.content-area{
+  padding:20px 40px 40px;
 }
 
-.journey-menu li{
-padding:12px 20px;
-margin-bottom:5px;
-border-radius:20px;
-cursor:pointer;
-transition: background-color 0.2s;
-font-size: 14px;
-display: flex;
-align-items: center;
-gap: 15px; 
-}
-
-.journey-menu li:hover{
-background:#cfcfcf;
-}
-
-.journey-menu .active{
-background: #318a5e;
-}
-
-.journey-logout-container{
-margin-top:auto;
-}   
-
-.journey-logout{
-margin-top:auto;
-cursor:pointer;
-opacity:.8;
-
-}
-
-
-
-/* MAIN */
-
-.journey-main{
-flex:1;
-overflow-y:auto;
-background:#f1f2f1;
-border-radius:20px 0 0 20px;
-}
-
-
-/* BANNER */
-
-.journey-banner{
-height:200px;
-background:url("/Images/Home_Img.png");
-background-size:cover;
-padding:40px;
-color:#1a1a1a;
-}
-
-.journey-banner h1{
-margin:0;
-font-size:28px;
-}
-
-.journey-banner p{
-margin-top:6px;
-opacity:.7;
-}
-
-
-
-/* CONTENT */
-
-.journey-content{
-padding:30px 40px;
-}
-
-.section-title{
-margin-bottom:20px;
-}
-
-
-
-/* TRIP CARD PREMIUM */
+/* PREMIUM TRIP CARDS */
 
 .trip-card{
-position:relative;
-display:flex;
-background:linear-gradient(135deg,#2f7a57,#3fa26f);
-color:white;
-border-radius:18px;
-margin-bottom:20px;
-overflow:hidden;
-box-shadow:0 8px 18px rgba(0,0,0,.2);
-transition:.3s;
+  display:flex;
+  background:linear-gradient(135deg,#2a8153,#3b9b6a);
+  color:white;
+  border-radius:18px;
+  margin-bottom:20px;
+  overflow:hidden;
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  transition:.3s;
+  position:relative;
 }
 
 .trip-card:hover{
-transform:translateY(-5px);
-box-shadow:0 18px 30px rgba(0,0,0,.3);
+  transform:translateY(-4px);
+  box-shadow:0 20px 35px rgba(0,0,0,.25);
 }
 
 .trip-card img{
-width:180px;
-height:140px;
-object-fit:cover;
+  width:220px;
+  height:140px;
+  object-fit:cover;
 }
 
-
 .trip-info{
-padding:20px;
-flex:1;
-position:relative;
+  padding:20px;
+  flex:1;
 }
 
 .trip-info h3{
-margin:0;
-font-size:20px;
+  margin:0;
+  font-size:20px;
 }
 
 .trip-info p{
-margin:6px 0;
-font-size:14px;
-opacity:.9;
+  margin:6px 0;
+  font-size:14px;
+  opacity:.9;
 }
 
 .location{
-font-size:13px;
-opacity:.8;
+  font-size:13px;
+  opacity:.85;
 }
-
 
 /* STATUS BADGE */
 
 .status{
-position:absolute;
-top:14px;
-right:14px;
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:600;
+  position:absolute;
+  top:16px;
+  right:22px;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
 }
 
 .upcoming{
-background:#d4e157;
-color:#1a1a1a;
+  background:#e4f57a;
+  color:#1a1a1a;
 }
 
 .completed{
-background:#b39ddb;
-color:#1a1a1a;
+  background:#c7b9ff;
+  color:#1a1a1a;
 }
 
-
-/* VIEW BUTTON */
+/* BUTTON */
 
 .view-btn{
-position:absolute;
-bottom:18px;
-right:20px;
-border:none;
-background:rgba(255,255,255,.9);
-color:#1a1a1a;
-padding:8px 20px;
-border-radius:20px;
-cursor:pointer;
-font-weight:600;
-transition:.3s;
+  position:absolute;
+  right:22px;
+  bottom:18px;
+  background:white;
+  border:none;
+  padding:8px 22px;
+  border-radius:20px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
 }
 
 .view-btn:hover{
-background:white;
-transform:scale(1.05);
+  transform:scale(1.05);
 }
