@@ -26,11 +26,11 @@ Your best companion to travel around the world
 
 <li className="active">🏠 Dashboard</li>
 
-<li onClick={()=>navigate("/admin-packages")}>
+<li onClick={()=>navigate("/admin/packages")}>
 🔎 Packages
 </li>
 
-<li onClick={()=>navigate("/admin-bookings")}>
+<li onClick={()=>navigate("/admin/Sbookings")}>
 💼 Bookings
 </li>
 
@@ -160,15 +160,15 @@ className="profile"
 {/* ACTION BUTTONS */}
 <div className="admin-actions">
 
-<button onClick={()=>navigate("/admin-add")}>
+<button onClick={()=>navigate("/admin/add")}>
 Add Package
 </button>
 
-<button onClick={()=>navigate("/admin-packages")}>
+<button onClick={()=>navigate("/admin/packages")}>
 View Packages
 </button>
 
-<button onClick={()=>navigate("/admin-bookings")}>
+<button onClick={()=>navigate("/admin/bookings")}>
 View all Bookings
 </button>
 

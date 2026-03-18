@@ -17,7 +17,7 @@ function Register() {
 
     // ⭐ ROLE BASED REDIRECT AFTER REGISTER
     if (role === "Admin") {
-      navigate("/admindashboard");
+      navigate("/admin");
     } else {
       navigate("/home");
     }

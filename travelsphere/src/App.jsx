@@ -10,6 +10,10 @@ import About from "./About";
 import Description from "./Description";
 import Booking from "./Booking";
 import AdminDashboard from "./AdminDashboard";
+import AdminPackages from "./AdminPackages";
+import AddPackage from "./AddPackage";
+import AdminBookings from "./AdminBookings";
+import AdminAbout from "./AdminAbout";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -44,6 +48,14 @@ function App() {
         <Route path="/booking/:id" element={<Booking />} />
         
         <Route path="/admin" element={<AdminDashboard/>} />
+
+        <Route path="/admin/packages" element={<AdminPackages />} />
+
+        <Route path="/admin/add" element={<AddPackage />} />
+
+        <Route path="/admin/bookings" element={<AdminBookings />} />
+
+        <Route path="/admin/about" element={<AdminAbout />} />
 
       </Routes>
 

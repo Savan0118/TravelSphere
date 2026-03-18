@@ -1,0 +1,89 @@
+.admin-container {
+  display: flex;
+  height: 100vh;
+  background: #f4f6f8;
+}
+
+/* MAIN SCROLL */
+.admin-main {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+/* BANNER */
+.banner {
+  position: relative;   /* ⭐ ADD THIS */
+}
+
+.profile {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+/* CONTENT */
+.booking-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.booking-container {
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.table-box {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: white;
+}
+
+.confirmed {
+  background: #198754;
+}
+
+.pending {
+  background: #ffc107;
+  color: black;
+}
+
+.cancelled {
+  background: #dc3545;
+}
+
+.status {
+  position: static !important;
+  display: inline-block;
+}

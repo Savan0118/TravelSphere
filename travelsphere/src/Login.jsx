@@ -12,7 +12,7 @@ function Login() {
 
     // ⭐ ROLE BASED ROUTING
     if (role === "Admin") {
-      navigate("/admindashboard");
+      navigate("/admin");
     } else {
       navigate("/home");
     }
