@@ -7,23 +7,22 @@ function Register() {
   const navigate = useNavigate();
 
   const [role, setRole] = useState("Traveller");
-
   const [showPopup, setShowPopup] = useState(false);
 
-
   const handleRegister = () => {
-
     setShowPopup(true);
-
   };
-
 
   const handleOK = () => {
 
-    navigate("/");
+    // ⭐ ROLE BASED REDIRECT AFTER REGISTER
+    if (role === "Admin") {
+      navigate("/admindashboard");
+    } else {
+      navigate("/home");
+    }
 
   };
-
 
   return (
 
@@ -34,7 +33,6 @@ function Register() {
         <h2 className="title">
           Welcome to TravelSphere
         </h2>
-
 
         <div className="segmented-container">
 
@@ -51,7 +49,6 @@ function Register() {
               Admin
             </button>
 
-
             <button
               className={role === "Traveller" ? "segment active" : "segment"}
               onClick={() => setRole("Traveller")}
@@ -63,57 +60,30 @@ function Register() {
 
         </div>
 
-
-
         <div className="input-group">
-
           <label>Name:</label>
-
           <input type="text" placeholder="Enter your full name"/>
-
         </div>
 
-
-
         <div className="input-group">
-
           <label>Mobile No:</label>
-
           <input type="text" placeholder="Enter your mobile number"/>
-
         </div>
 
-
-
         <div className="input-group">
-
           <label>Email:</label>
-
           <input type="email" placeholder="Enter your email address"/>
-
         </div>
 
-
-
         <div className="input-group">
-
           <label>Password:</label>
-
           <input type="password" placeholder="Enter your password"/>
-
         </div>
-
-
 
         <div className="input-group">
-
           <label>Confirm Password:</label>
-
           <input type="password" placeholder="Re-enter your password"/>
-
         </div>
-
-
 
         <button
           className="register-btn"
@@ -122,24 +92,14 @@ function Register() {
           Register
         </button>
 
-
-
-        {/* CLICKABLE SIGN IN */}
-
         <div className="login-link">
-
           Already have an account ?
-
           <span onClick={() => navigate("/")}>
             Sign In
           </span>
-
         </div>
 
-
       </div>
-
-
 
       {showPopup && (
 
@@ -168,5 +128,3 @@ function Register() {
 }
 
 export default Register;
-
-/* This is Register.jsx */

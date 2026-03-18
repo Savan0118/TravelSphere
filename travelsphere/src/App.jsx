@@ -8,6 +8,8 @@ import BudgetResult from "./BudgetResult";
 import MyJourneys from "./MyJourneys";
 import About from "./About";
 import Description from "./Description";
+import Booking from "./Booking";
+import AdminDashboard from "./AdminDashboard";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -41,6 +43,8 @@ function App() {
 
         <Route path="/booking/:id" element={<Booking />} />
         
+        <Route path="/admin" element={<AdminDashboard/>} />
+
       </Routes>
 
     </BrowserRouter>

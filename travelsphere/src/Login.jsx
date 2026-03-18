@@ -10,9 +10,12 @@ function Login() {
 
   const handleLogin = () => {
 
-    // You can add authentication here later
-
-    navigate("/home");
+    // ⭐ ROLE BASED ROUTING
+    if (role === "Admin") {
+      navigate("/admindashboard");
+    } else {
+      navigate("/home");
+    }
 
   };
 
@@ -25,7 +28,6 @@ function Login() {
         <h2 className="title">
           Welcome to TravelSphere
         </h2>
-
 
         {/* Segmented Control */}
 
@@ -44,7 +46,6 @@ function Login() {
               Admin
             </button>
 
-
             <button
               className={role === "Traveller" ? "segment active" : "segment"}
               onClick={() => setRole("Traveller")}
@@ -56,41 +57,23 @@ function Login() {
 
         </div>
 
-
-
         {/* Email */}
 
         <div className="input-group">
-
           <label>Enter Email:</label>
-
           <input type="text" placeholder="Enter your email" />
-
         </div>
-
-
 
         {/* Password */}
 
         <div className="input-group">
-
           <label>Password:</label>
-
           <input type="password" placeholder="Enter your password" />
-
         </div>
-
-
-
-        {/* Forgot */}
 
         <div className="forgot">
           Forgot Password?
         </div>
-
-
-
-        {/* Login Button */}
 
         <button
           className="login-btn"
@@ -99,20 +82,12 @@ function Login() {
           Login
         </button>
 
-
-
-        {/* Register */}
-
         <div className="register">
-
           Don’t have an account ?
-
           <span onClick={() => navigate("/register")}>
             Register
           </span>
-
         </div>
-
 
       </div>
 
@@ -123,5 +98,3 @@ function Login() {
 }
 
 export default Login;
-
-/* This is Login.jsx */
