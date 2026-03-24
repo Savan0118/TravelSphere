@@ -30,7 +30,7 @@ Your best companion to travel around the world
 🔎 Packages
 </li>
 
-<li onClick={()=>navigate("/admin/Sbookings")}>
+<li onClick={()=>navigate("/admin/bookings")}>
 💼 Bookings
 </li>
 
