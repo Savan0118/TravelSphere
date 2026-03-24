@@ -104,9 +104,9 @@ function Home() {
 
 
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             className="profile"
-            alt="User Profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
           />
 
 

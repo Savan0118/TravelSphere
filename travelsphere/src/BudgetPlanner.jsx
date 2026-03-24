@@ -19,7 +19,6 @@ function BudgetPlanner() {
   });
 
   const handleChange = (e) => {
-
     let value = e.target.value;
 
     if (["days", "travelers", "rooms", "maxDist"].includes(e.target.name)) {
@@ -34,73 +33,28 @@ function BudgetPlanner() {
 
   const calculateBudget = () => {
 
+    if (!form.days || !form.travelers || !form.travelMode || !form.hotel) return;
+
     const days = Number(form.days);
     const people = Number(form.travelers);
-    const distance = Number(form.maxDist);
 
-    if (!days || !people) return;
+    let total = days * people * 1200;
 
-    let total = 0;
+    if (form.travelMode === "bus") total += form.maxDist * 2 * people;
+    if (form.travelMode === "train") total += form.maxDist * 4 * people;
+    if (form.travelMode === "flight") total += form.maxDist * 10 * people;
 
-    /* Base Cost */
-    total += days * people * 1200;
+    if (form.hotel === "standard") total += days * 1500 * form.rooms;
+    if (form.hotel === "premium") total += days * 3000 * form.rooms;
+    if (form.hotel === "luxury") total += days * 6000 * form.rooms;
 
-    /* Travel Cost based on distance */
+    if (form.meals === "yes") total += days * people * 800;
 
-    if (form.travelMode === "Bus") {
-      total += distance * 2 * people;
-    }
+    if (form.activities === "basic") total += 2000;
+    if (form.activities === "adventure") total += 5000;
+    if (form.activities === "premium") total += 9000;
 
-    if (form.travelMode === "Train") {
-      total += distance * 4 * people;
-    }
-
-    if (form.travelMode === "Flight") {
-      total += distance * 10 * people;
-    }
-
-    /* Hotel Category */
-
-    if (form.hotel === "Standard") {
-      total += days * form.rooms * 1500;
-    }
-
-    if (form.hotel === "Premium") {
-      total += days * form.rooms * 3000;
-    }
-
-    if (form.hotel === "Luxury") {
-      total += days * form.rooms * 6000;
-    }
-
-    /* Meals */
-
-    if (form.meals === "Yes") {
-      total += days * people * 800;
-    }
-
-    /* Activities */
-
-    if (form.activities === "Basic") {
-      total += 2000;
-    }
-
-    if (form.activities === "Adventure") {
-      total += 5000;
-    }
-
-    if (form.activities === "Premium") {
-      total += 9000;
-    }
-
-    /* Navigate to result page */
-
-    navigate("/budget-result", {
-      state: {
-        form: form,
-        total: total
-      }
-    });
+    navigate("/budget-result", { state: { form, total } });
   };
 
   return (
@@ -108,14 +62,10 @@ function BudgetPlanner() {
     <div className="home">
 
       {/* SIDEBAR */}
-
       <div className="sidebar">
-
         <div className="sidebar-top">
 
-          <h2 className="logo">
-            TravelSphere
-          </h2>
+          <h2 className="logo">TravelSphere</h2>
 
           <p className="tagline">
             Discover. Plan. Experience.<br />
@@ -123,31 +73,12 @@ function BudgetPlanner() {
           </p>
 
           <ul className="menu">
-
-            <li onClick={() => navigate("/home")}>
-              <span style={{ fontSize: "18px" }}>🏠</span> Home
-            </li>
-
-            <li onClick={() => navigate("/search")}>
-              <span style={{ fontSize: "18px" }}>🔍</span> Explore
-            </li>
-
-            <li onClick={() => navigate("/journeys")}>
-              <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
-            </li>
-
-            <li className="active">
-              <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
-            </li>
-
-            <li onClick={() => navigate("/about")}>
-              <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontSize: "18px" }}>🌦️</span> Weather
-            </li>
-
+            <li onClick={() => navigate("/home")}>🏠 Home</li>
+            <li onClick={() => navigate("/search")}>🔍 Explore</li>
+            <li onClick={() => navigate("/journeys")}>🗺️ My Journeys</li>
+            <li className="active">💰 Budget Planner</li>
+            <li onClick={() => navigate("/about")}>ℹ️ About Us</li>
+            <li onClick={() => navigate("/weather")}>🌦️ Weather</li>
           </ul>
 
         </div>
@@ -160,27 +91,24 @@ function BudgetPlanner() {
 
       </div>
 
-
       {/* MAIN */}
-
       <div className="main">
 
         <div className="banner budget-banner">
 
           <div className="banner-text">
-
-            <h1>
-              Smart Trip Budget Planner
-            </h1>
-
-            <p>
-              Provide a few travel details to estimate the total cost of your trip.
-            </p>
-
+            <h1>Plan Your Trip Budget</h1>
+            <p>Estimate your travel expenses easily</p>
           </div>
 
-        </div>
+          {/* ✅ ADDED PROFILE ICON */}
+          <img
+            className="profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
+          />
 
+        </div>
 
         <div className="content-area">
 
@@ -189,157 +117,68 @@ function BudgetPlanner() {
             <div className="grid-2">
 
               <div>
-
-                <label>
-                  Trip Duration (Days)
-                </label>
-
-                <input
-                  type="number"
-                  name="days"
-                  onChange={handleChange}
-                />
-
+                <label>Number of Days</label>
+                <input type="number" name="days" onChange={handleChange} />
               </div>
 
-
               <div>
-
-                <label>
-                  Number of Travelers
-                </label>
-
-                <input
-                  type="number"
-                  name="travelers"
-                  onChange={handleChange}
-                />
-
+                <label>Number of Travelers</label>
+                <input type="number" name="travelers" onChange={handleChange} />
               </div>
 
-
               <div>
-
-                <label>
-                  Travel Mode
-                </label>
-
-                <select
-                  name="travelMode"
-                  onChange={handleChange}
-                >
-
+                <label>Travel Mode</label>
+                <select name="travelMode" onChange={handleChange}>
                   <option value="">Select</option>
-                  <option>Bus</option>
-                  <option>Train</option>
-                  <option>Flight</option>
-
+                  <option value="bus">Bus</option>
+                  <option value="train">Train</option>
+                  <option value="flight">Flight</option>
                 </select>
-
               </div>
 
-
               <div>
-
-                <label>
-                  Distance Range (km)
-                </label>
-
-                <input
-                  type="number"
-                  name="maxDist"
-                  onChange={handleChange}
-                />
-
-              </div>
-
-
-              <div>
-
-                <label>
-                  Hotel Category
-                </label>
-
-                <select
-                  name="hotel"
-                  onChange={handleChange}
-                >
-
+                <label>Hotel Type</label>
+                <select name="hotel" onChange={handleChange}>
                   <option value="">Select</option>
-                  <option>Standard</option>
-                  <option>Premium</option>
-                  <option>Luxury</option>
-
+                  <option value="standard">Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="luxury">Luxury</option>
                 </select>
-
               </div>
 
-
               <div>
-
-                <label>
-                  Rooms Required
-                </label>
-
-                <input
-                  type="number"
-                  name="rooms"
-                  onChange={handleChange}
-                />
-
+                <label>Rooms Required</label>
+                <input type="number" name="rooms" onChange={handleChange} />
               </div>
 
-
               <div>
-
-                <label>
-                  Include Daily Meals?
-                </label>
-
-                <select
-                  name="meals"
-                  onChange={handleChange}
-                >
-
+                <label>Meals Included</label>
+                <select name="meals" onChange={handleChange}>
                   <option value="">Select</option>
-                  <option>Yes</option>
-                  <option>No</option>
-
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
-
               </div>
 
+              <div>
+                <label>Activities</label>
+                <select name="activities" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="basic">Basic</option>
+                  <option value="adventure">Adventure</option>
+                  <option value="premium">Premium</option>
+                </select>
+              </div>
 
               <div>
-
-                <label>
-                  Paid Activities Package
-                </label>
-
-                <select
-                  name="activities"
-                  onChange={handleChange}
-                >
-
-                  <option value="">Select</option>
-                  <option value="Basic">Basic</option>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Premium">Premium</option>
-
-                </select>
-
+                <label>Distance (km)</label>
+                <input type="number" name="maxDist" onChange={handleChange} />
               </div>
 
             </div>
 
-
-            <button
-              className="generate-btn"
-              onClick={calculateBudget}
-            >
-
-              Generate Smart Budget
-
+            <button className="generate-btn" onClick={calculateBudget}>
+              Generate Budget
             </button>
 
           </div>

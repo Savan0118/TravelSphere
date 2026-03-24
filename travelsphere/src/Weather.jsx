@@ -202,13 +202,9 @@ function Weather() {
 
 
           <img
-
-            src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png"
-
             className="profile"
-
-            alt="Weather"
-
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
           />
 
 

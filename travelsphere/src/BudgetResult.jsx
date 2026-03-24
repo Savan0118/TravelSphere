@@ -133,7 +133,6 @@ function BudgetResult() {
 
 
       {/* MAIN */}
-
       <div className="main">
 
         <div className="banner budget-banner">
@@ -145,6 +144,13 @@ function BudgetResult() {
             <p>Category wise analysis of your trip budget</p>
 
           </div>
+
+          {/* ✅ ADDED PROFILE ICON */}
+          <img
+            className="profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
+          />
 
         </div>
 

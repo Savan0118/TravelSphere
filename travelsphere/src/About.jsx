@@ -72,9 +72,9 @@ function About() {
           </div>
 
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             className="profile"
-            alt="profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
           />
 
         </div>
