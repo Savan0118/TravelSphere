@@ -7,6 +7,40 @@ function Profile() {
 
   const navigate = useNavigate();
 
+  const getProfileData = () => {
+
+    const saved = localStorage.getItem("profileData");
+
+    if (saved) {
+      const data = JSON.parse(saved);
+
+      return {
+        name: data.name || "Harish Patel",
+        email: data.email || "harishpatel123@gmail.com",
+        phone: data.phone || "+91 12345 67890",
+        address: data.address || "Rajkot, Gujarat",
+        budget: data.budget || "Mid Range",
+        days: data.days || "4 - 7 days",
+        type: data.type && data.type.length
+          ? data.type
+          : ["Nature", "Culture", "Adventure"]
+      };
+    }
+
+    return {
+      name: "Harish Patel",
+      email: "harishpatel123@gmail.com",
+      phone: "+91 12345 67890",
+      address: "Rajkot, Gujarat",
+      budget: "Mid Range",
+      days: "4 - 7 days",
+      type: ["Nature", "Culture", "Adventure"]
+    };
+  };
+
+  // ✅ Initialize state directly (NO useEffect)
+  const [profile] = useState(getProfileData);
+
   const [image, setImage] = useState(
     "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
   );
@@ -24,7 +58,6 @@ function Profile() {
 
       {/* SIDEBAR */}
       <div className="sidebar">
-
         <div className="sidebar-top">
 
           <h2 className="logo">TravelSphere</h2>
@@ -35,31 +68,12 @@ function Profile() {
           </p>
 
           <ul className="menu">
-
-            <li onClick={() => navigate("/home")}>
-              <span style={{ fontSize: "18px" }}>🏠</span> Home
-            </li>
-
-            <li onClick={() => navigate("/search")}>
-              <span style={{ fontSize: "18px" }}>🔍</span> Explore
-            </li>
-
-            <li onClick={() => navigate("/journeys")}>
-              <span style={{ fontSize: "18px" }}>🗺️</span> My Journeys
-            </li>
-
-            <li onClick={() => navigate("/budget")}>
-              <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
-            </li>
-
-            <li onClick={() => navigate("/about")}>
-              <span style={{ fontSize: "18px" }}>ℹ️</span> About Us
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontSize: "18px" }}>🌦️</span> Weather
-            </li>
-
+            <li onClick={() => navigate("/home")}>🏠 Home</li>
+            <li onClick={() => navigate("/search")}>🔍 Explore</li>
+            <li onClick={() => navigate("/journeys")}>🗺️ My Journeys</li>
+            <li onClick={() => navigate("/budget")}>💰 Budget Planner</li>
+            <li onClick={() => navigate("/about")}>ℹ️ About Us</li>
+            <li onClick={() => navigate("/weather")}>🌦️ Weather</li>
           </ul>
 
         </div>
@@ -69,42 +83,30 @@ function Profile() {
             ⏻ Log Out
           </div>
         </div>
-
       </div>
 
 
       {/* MAIN */}
       <div className="main">
 
-        {/* BANNER */}
         <div className="banner profile-banner">
-
           <div className="banner-text">
             <h1>My Profile</h1>
             <p>Manage your account settings</p>
           </div>
-
-          {/* ❌ REMOVED TOP PROFILE ICON */}
-
         </div>
 
 
-        {/* PROFILE HEADER */}
+        {/* HEADER */}
         <div className="profile-header">
 
-          {/* ✅ CLICKABLE IMAGE */}
           <label className="profile-upload">
 
-            <img
-              src={image}
-              className="profile-avatar"
-              alt="profile"
-            />
+            <img src={image} className="profile-avatar" alt="profile" />
 
             <input
               type="file"
               accept="image/*"
-              capture="environment"
               onChange={handleImageChange}
               hidden
             />
@@ -112,30 +114,30 @@ function Profile() {
           </label>
 
           <div>
-            <h2>Harish Patel</h2>
-            <p>harishpatel123@gmail.com</p>
-            <p>Gujarat, India</p>
+            <h2>{profile.name}</h2>
+            <p>{profile.email}</p>
+            <p>{profile.address}</p>
           </div>
 
         </div>
 
 
-        {/* CONTENT */}
+        {/* CARDS */}
         <div className="profile-grid">
 
           <div className="profile-card">
             <h3>Personal Information</h3>
-            <p>Harish Patel</p>
-            <p>harishpatel@gmail.com</p>
-            <p>+91 12345 67890</p>
-            <p>Rajkot, Gujarat</p>
+            <p>{profile.name}</p>
+            <p>{profile.email}</p>
+            <p>{profile.phone}</p>
+            <p>{profile.address}</p>
           </div>
 
           <div className="profile-card">
             <h3>Travel Preferences</h3>
-            <p>Mid Range</p>
-            <p>4 - 7 days</p>
-            <p>Nature, Culture, Adventure</p>
+            <p>{profile.budget}</p>
+            <p>{profile.days}</p>
+            <p>{profile.type.join(", ")}</p>
           </div>
 
         </div>

@@ -37,7 +37,9 @@ function EditProfile() {
   };
 
   const handleSave = () => {
-    alert("Profile Updated ✅");
+
+    localStorage.setItem("profileData", JSON.stringify(form));
+
     navigate("/profile");
   };
 
@@ -45,9 +47,7 @@ function EditProfile() {
 
     <div className="home">
 
-      {/* SIDEBAR */}
       <div className="sidebar">
-
         <div className="sidebar-top">
 
           <h2 className="logo">TravelSphere</h2>
@@ -73,11 +73,9 @@ function EditProfile() {
             ⏻ Log Out
           </div>
         </div>
-
       </div>
 
 
-      {/* MAIN */}
       <div className="main">
 
         <div className="banner profile-banner">
@@ -87,12 +85,9 @@ function EditProfile() {
           </div>
         </div>
 
-
         <div className="content-area">
 
           <div className="edit-card">
-
-            {/* INPUTS */}
 
             <div className="form-row">
               <label>Name :</label>
@@ -105,7 +100,7 @@ function EditProfile() {
             </div>
 
             <div className="form-row">
-              <label>Phone no :</label>
+              <label>Phone :</label>
               <input name="phone" onChange={handleChange} />
             </div>
 
@@ -114,44 +109,31 @@ function EditProfile() {
               <textarea name="address" onChange={handleChange}></textarea>
             </div>
 
-
-            {/* BUDGET */}
             <div className="form-row">
               <label>Expenses :</label>
-
               <div className="radio-group">
-                <label><input type="radio" name="budget" value="Low" onChange={handleChange} /> Low</label>
-                <label><input type="radio" name="budget" value="Medium" onChange={handleChange} /> Medium</label>
-                <label><input type="radio" name="budget" value="High" onChange={handleChange} /> High</label>
+                <label><input type="radio" name="budget" value="Low" onChange={handleChange}/> Low</label>
+                <label><input type="radio" name="budget" value="Medium" onChange={handleChange}/> Medium</label>
+                <label><input type="radio" name="budget" value="High" onChange={handleChange}/> High</label>
               </div>
-
             </div>
 
-
-            {/* DAYS */}
             <div className="form-row">
               <label>Preferred days :</label>
               <input name="days" onChange={handleChange} />
             </div>
 
-
-            {/* TYPE */}
             <div className="form-row">
-              <label>Type of destination :</label>
+              <label>Type :</label>
 
               <div className="checkbox-group">
-
                 <label><input type="checkbox" onChange={() => handleCheckbox("Nature")} /> Nature</label>
-                <label><input type="checkbox" onChange={() => handleCheckbox("Historical")} /> Historical</label>
-                <label><input type="checkbox" onChange={() => handleCheckbox("Night city")} /> Night city</label>
                 <label><input type="checkbox" onChange={() => handleCheckbox("Adventure")} /> Adventure</label>
                 <label><input type="checkbox" onChange={() => handleCheckbox("Cultural")} /> Cultural</label>
                 <label><input type="checkbox" onChange={() => handleCheckbox("Beaches")} /> Beaches</label>
-
               </div>
 
             </div>
-
 
             <button className="save-btn" onClick={handleSave}>
               Save
