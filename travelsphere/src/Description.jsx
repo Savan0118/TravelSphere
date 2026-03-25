@@ -69,7 +69,66 @@ function Description() {
         "Day 1: Arrival & Taj Mahal Visit",
         "Day 2: Agra Fort + Local Shopping"
       ]
-    }
+    },
+
+    amberfort: {
+  title: "Amber Fort Royal Tour",
+  location: "Jaipur, Rajasthan",
+  duration: "3 Days",
+  price: "₹9,500",
+  transport: "Cab + Guide",
+  season: "Oct – Mar",
+  hotel: "Pink City Palace Hotel",
+  room: "Royal Heritage Room",
+  meals: "Breakfast + Dinner",
+  about:
+    "Explore the royal heritage of Rajasthan with a visit to the magnificent Amber Fort. Experience elephant rides, traditional markets and grand Rajput architecture.",
+  itinerary: [
+    "Day 1: Jaipur Arrival & Local Market Visit",
+    "Day 2: Amber Fort + Nahargarh Fort",
+    "Day 3: Hawa Mahal + Departure"
+  ]
+},
+
+gateway: {
+  title: "Gateway of India City Escape",
+  location: "Mumbai, Maharashtra",
+  duration: "2 Days",
+  price: "₹6,000",
+  transport: "Local Travel + Ferry",
+  season: "Nov – Feb",
+  hotel: "Marine Drive Residency",
+  room: "Sea View Room",
+  meals: "Breakfast",
+  about:
+    "Discover the vibrant life of Mumbai with a visit to the iconic Gateway of India. Enjoy ferry rides to Elephanta caves and explore Marine Drive nightlife.",
+  itinerary: [
+    "Day 1: Gateway Visit + Ferry Ride",
+    "Day 2: Marine Drive + Shopping + Departure"
+  ]
+},
+
+kashmir: {
+  title: "Kashmir Paradise Tour",
+  location: "Srinagar, Jammu & Kashmir",
+  duration: "6 Days",
+  price: "₹28,000",
+  transport: "Flight + Cab",
+  season: "Apr – Jun",
+  hotel: "Dal Lake Houseboat",
+  room: "Luxury Lake View Suite",
+  meals: "Breakfast + Dinner",
+  about:
+    "Experience heaven on earth with breathtaking valleys, Dal Lake shikara rides and snow-capped Himalayan views.",
+  itinerary: [
+    "Day 1: Arrival Srinagar + Houseboat Stay",
+    "Day 2: Gulmarg Excursion",
+    "Day 3: Sonmarg Visit",
+    "Day 4: Pahalgam Valley Tour",
+    "Day 5: Local Markets + Shikara Ride",
+    "Day 6: Departure"
+  ]
+},
 
   };
 

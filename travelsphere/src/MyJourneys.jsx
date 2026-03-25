@@ -16,9 +16,7 @@ function MyJourneys() {
 
         <div className="sidebar-top">
 
-          <h2 className="logo">
-            TravelSphere
-          </h2>
+          <h2 className="logo">TravelSphere</h2>
 
           <p className="tagline">
             Discover. Plan. Experience.<br />
@@ -76,12 +74,6 @@ function MyJourneys() {
             <p>Explore the world with ease</p>
           </div>
 
-          <img
-            className="profile"
-            onClick={() => navigate("/profile")}
-            style={{ cursor: "pointer" }}
-          />
-
         </div>
 
 
@@ -90,17 +82,18 @@ function MyJourneys() {
 
           <h2 className="section-title">My Trips</h2>
 
-
           {/* CARD 1 */}
           <div className="trip-card">
-
-            <span className="status upcoming">Upcoming</span>
 
             <img src="/Images/Home_Img.png" alt="Ladakh" />
 
             <div className="trip-info">
 
-              <h3>Ladakh</h3>
+              <div className="trip-top">
+                <h3>Ladakh</h3>
+                <span className="status upcoming">Upcoming</span>
+              </div>
+
               <p>15 Apr 2024 — 21 Apr 2024</p>
               <p className="location">📍 Leh, Ladakh</p>
 
@@ -116,13 +109,15 @@ function MyJourneys() {
           {/* CARD 2 */}
           <div className="trip-card">
 
-            <span className="status upcoming">Upcoming</span>
-
             <img src="/Images/Home_Img.png" alt="Varanasi" />
 
             <div className="trip-info">
 
-              <h3>Varanasi (Kashi)</h3>
+              <div className="trip-top">
+                <h3>Varanasi (Kashi)</h3>
+                <span className="status upcoming">Upcoming</span>
+              </div>
+
               <p>2 May 2024 — 6 May 2024</p>
               <p className="location">📍 Kochi, Kerala</p>
 
@@ -138,13 +133,15 @@ function MyJourneys() {
           {/* CARD 3 */}
           <div className="trip-card">
 
-            <span className="status completed">Completed</span>
-
             <img src="/Images/Home_Img.png" alt="Taj Mahal" />
 
             <div className="trip-info">
 
-              <h3>Taj Mahal</h3>
+              <div className="trip-top">
+                <h3>Taj Mahal</h3>
+                <span className="status completed">Completed</span>
+              </div>
+
               <p>15 Jan 2025 — 22 Jan 2025</p>
               <p className="location">📍 Agra, Uttar Pradesh</p>
 

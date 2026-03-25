@@ -163,7 +163,7 @@ function Home() {
                 </p>
 
 
-                <button>
+                <button onClick={() => navigate("/description/amberfort")}>
                   View
                 </button>
 
@@ -199,7 +199,7 @@ function Home() {
                 </p>
 
 
-                <button>
+                <button onClick={() => navigate("/description/gateway")}>
                   View
                 </button>
 
@@ -235,7 +235,7 @@ function Home() {
                 </p>
 
 
-                <button>
+                <button onClick={() => navigate("/description/kashmir")}>
                   View
                 </button>
 
