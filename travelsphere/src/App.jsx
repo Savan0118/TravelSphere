@@ -15,6 +15,9 @@ import AddPackage from "./AddPackage";
 import AdminBookings from "./AdminBookings";
 import AdminAbout from "./AdminAbout";
 import Profile from "./Profile";
+import EditProfile from "./EditProfile";
+
+
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -60,6 +63,8 @@ function App() {
         <Route path="/admin/about" element={<AdminAbout />} />
 
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/edit-profile" element={<EditProfile />} />
 
       </Routes>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +7,22 @@ function Profile() {
 
   const navigate = useNavigate();
 
+  const [image, setImage] = useState(
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+  );
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
+  };
+
   return (
 
     <div className="home">
 
-      {/* SIDEBAR (✅ SAME AS OTHER PAGES) */}
+      {/* SIDEBAR */}
       <div className="sidebar">
 
         <div className="sidebar-top">
@@ -73,13 +84,7 @@ function Profile() {
             <p>Manage your account settings</p>
           </div>
 
-          {/* PROFILE ICON (OPTIONAL CLICKABLE BACK) */}
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            className="profile"
-            onClick={() => navigate("/home")}
-            style={{ cursor: "pointer" }}
-          />
+          {/* ❌ REMOVED TOP PROFILE ICON */}
 
         </div>
 
@@ -87,10 +92,24 @@ function Profile() {
         {/* PROFILE HEADER */}
         <div className="profile-header">
 
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            className="profile-avatar"
-          />
+          {/* ✅ CLICKABLE IMAGE */}
+          <label className="profile-upload">
+
+            <img
+              src={image}
+              className="profile-avatar"
+              alt="profile"
+            />
+
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleImageChange}
+              hidden
+            />
+
+          </label>
 
           <div>
             <h2>Harish Patel</h2>
@@ -121,8 +140,12 @@ function Profile() {
 
         </div>
 
-
-        <button className="edit-btn">Edit Profile</button>
+        <button
+          className="edit-btn"
+          onClick={() => navigate("/edit-profile")}
+        >
+          Edit Profile
+        </button>
 
       </div>
 
