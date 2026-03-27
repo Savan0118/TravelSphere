@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import "./MyJourneys.css";
+import Sidebar from "./Sidebar";   // ✅ IMPORT
 import { useNavigate } from "react-router-dom";
 
 function MyJourneys() {
@@ -11,81 +12,31 @@ function MyJourneys() {
 
     <div className="home">
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
-
-        <div className="sidebar-top">
-
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-          <ul className="menu">
-
-            <li onClick={() => navigate("/home")}>
-              <span style={{ fontSize: "18px" }}>🏠</span> Home
-            </li>
-
-            <li onClick={() => navigate("/search")}>
-              <span style={{ fontSize: "18px" }}>🔍</span> Explore
-            </li>
-
-            <li className="active">
-              <span style={{ fontSize: "18px" }}>🗺️</span> My Journeys
-            </li>
-
-            <li onClick={() => navigate("/budget")}>
-              <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
-            </li>
-
-            <li onClick={() => navigate("/about")}>
-              <span style={{ fontSize: "18px" }}>ℹ️</span> About Us
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontSize: "18px" }}>🌦️</span> Weather
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            <span style={{ fontSize: "20px" }}>⏻</span>
-            Log Out
-          </div>
-        </div>
-
-      </div>
-
+      {/* ✅ SIDEBAR COMPONENT */}
+      <Sidebar />
 
       {/* MAIN */}
       <div className="main">
 
         {/* BANNER */}
         <div className="banner">
-
           <div className="banner-text">
             <h1>Completed My Adventure</h1>
             <p>Explore the world with ease</p>
           </div>
-
         </div>
-
 
         {/* CONTENT */}
         <div className="content-area">
 
           <h2 className="section-title">My Trips</h2>
 
-          {/* CARD 1 */}
-          <div className="trip-card">
+          {/* CARD */}
+          <div className="trip-card premium">
 
-            <img src="/Images/Home_Img.png" alt="Ladakh" />
+            <div className="trip-image">
+              <img src="/Images/Home_Img.png" alt="Ladakh" />
+            </div>
 
             <div className="trip-info">
 
@@ -94,10 +45,18 @@ function MyJourneys() {
                 <span className="status upcoming">Upcoming</span>
               </div>
 
-              <p>15 Apr 2024 — 21 Apr 2024</p>
+              <p className="date">15 Apr 2024 — 21 Apr 2024</p>
               <p className="location">📍 Leh, Ladakh</p>
 
-              <button className="view-btn">
+              <div className="trip-meta">
+                <span className="meta">👨‍👩‍👧‍👦 Family Trip</span>
+                <span className="meta">👥 5 Travellers</span>
+              </div>
+
+              <button
+                className="view-btn"
+                onClick={()=>navigate("/description/ladakh")}
+              >
                 View Details
               </button>
 
@@ -105,11 +64,12 @@ function MyJourneys() {
 
           </div>
 
+          {/* CARD */}
+          <div className="trip-card premium">
 
-          {/* CARD 2 */}
-          <div className="trip-card">
-
-            <img src="/Images/Home_Img.png" alt="Varanasi" />
+            <div className="trip-image">
+              <img src="/Images/Home_Img.png" alt="Varanasi" />
+            </div>
 
             <div className="trip-info">
 
@@ -118,10 +78,18 @@ function MyJourneys() {
                 <span className="status upcoming">Upcoming</span>
               </div>
 
-              <p>2 May 2024 — 6 May 2024</p>
+              <p className="date">2 May 2024 — 6 May 2024</p>
               <p className="location">📍 Kochi, Kerala</p>
 
-              <button className="view-btn">
+              <div className="trip-meta">
+                <span className="meta">👬 Friends Trip</span>
+                <span className="meta">👥 4 Travellers</span>
+              </div>
+
+              <button
+                className="view-btn"
+                onClick={()=>navigate("/description/varanasi")}
+              >
                 View Details
               </button>
 
@@ -129,11 +97,12 @@ function MyJourneys() {
 
           </div>
 
+          {/* CARD */}
+          <div className="trip-card premium">
 
-          {/* CARD 3 */}
-          <div className="trip-card">
-
-            <img src="/Images/Home_Img.png" alt="Taj Mahal" />
+            <div className="trip-image">
+              <img src="/Images/Home_Img.png" alt="Taj Mahal" />
+            </div>
 
             <div className="trip-info">
 
@@ -142,10 +111,18 @@ function MyJourneys() {
                 <span className="status completed">Completed</span>
               </div>
 
-              <p>15 Jan 2025 — 22 Jan 2025</p>
+              <p className="date">15 Jan 2025 — 22 Jan 2025</p>
               <p className="location">📍 Agra, Uttar Pradesh</p>
 
-              <button className="view-btn">
+              <div className="trip-meta">
+                <span className="meta">🧍 Solo Trip</span>
+                <span className="meta">👥 1 Traveller</span>
+              </div>
+
+              <button
+                className="view-btn"
+                onClick={()=>navigate("/description/taj")}
+              >
                 View Details
               </button>
 
@@ -160,7 +137,6 @@ function MyJourneys() {
     </div>
 
   );
-
 }
 
 export default MyJourneys;

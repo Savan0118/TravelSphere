@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import "./Booking.css";
+import Sidebar from "./Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Booking() {
@@ -8,24 +9,66 @@ function Booking() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    travellers: "",
-    date: "",
-    special: ""
-  });
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
+  const packages = {
+    ladakh: {
+      name: "Ladakh Adventure Tour",
+      price: 70000,
+      duration: "7 Days / 6 Nights",
+      hotel: "The Grand Dragon Ladakh",
+      meals: "Breakfast + Dinner",
+      seatsLeft: 5,
+      totalSeats: 12
+    },
+    varanasi: {
+      name: "Spiritual Varanasi Journey",
+      price: 14000,
+      duration: "5 Days / 4 Nights",
+      hotel: "BrijRama Palace",
+      meals: "Breakfast",
+      seatsLeft: 8,
+      totalSeats: 15
+    }
   };
 
+  const data = packages[id];
+
+  // fallback safety
+  if (!data) {
+    return <h2 style={{ padding: "40px" }}>Package Not Found</h2>;
+  }
+
+  // Simulated logged-in user
+  const user = {
+    name: "Harish Patel",
+    email: "harishpatel24@gmail.com"
+  };
+
+  const [travellers, setTravellers] = useState([
+    { name: user.name, age: "" }
+  ]);
+
+  const handleTravellerChange = (index, field, value) => {
+    const updated = [...travellers];
+    updated[index][field] = value;
+    setTravellers(updated);
+  };
+
+  const addTraveller = () => {
+    if (travellers.length < data.totalSeats) {
+      setTravellers([...travellers, { name: "", age: "" }]);
+    }
+  };
+
+  const removeTraveller = () => {
+    if (travellers.length > 1) {
+      setTravellers(travellers.slice(0, -1));
+    }
+  };
+
+  const totalCost = travellers.length * data.price;
+
   const handleSubmit = () => {
-    alert("Booking Confirmed ✅");
+    alert("Booking Request Sent ✅\nAdmin will contact you soon.");
     navigate("/journeys");
   };
 
@@ -33,105 +76,78 @@ function Booking() {
 
     <div className="home">
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
-
-        <div className="sidebar-top">
-
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-          <ul className="menu">
-            <li onClick={() => navigate("/home")}>🏠 Home</li>
-            <li onClick={() => navigate("/search")}>🔍 Explore</li>
-            <li onClick={() => navigate("/journeys")}>🗺️ My Journeys</li>
-            <li onClick={() => navigate("/budget")}>💰 Budget Planner</li>
-            <li onClick={() => navigate("/about")}>ℹ️ About Us</li>
-            <li onClick={() => navigate("/weather")}>🌦️ Weather</li>
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            ⏻ Log Out
-          </div>
-        </div>
-
-      </div>
-
+      {/* ✅ SIDEBAR */}
+      <Sidebar />
 
       {/* MAIN */}
       <div className="main">
 
+        {/* BANNER */}
         <div className="banner booking-banner">
-
-          <div className="banner-text">
-            <h1>Complete Your Booking</h1>
-            <p>Secure your travel experience in just a few steps</p>
-          </div>
-
+          <div className="banner-overlay"></div>
         </div>
 
-
+        {/* CONTENT */}
         <div className="content-area booking-layout">
 
-          {/* LEFT FORM */}
+          {/* LEFT */}
           <div className="booking-left">
 
-            <div className="booking-card">
+            <div className="booking-card glass">
 
-              <h2>Traveller Information</h2>
+              <h2 className="section-title">Booking Contact</h2>
 
-              <input
-                type="text"
-                placeholder="Full Name"
-                name="name"
-                onChange={handleChange}
-              />
+              {/* PROFILE */}
+              <div className="profile-box">
+                <div>
+                  <strong>{user.name}</strong>
+                  <p>{user.email}</p>
+                </div>
+                <button className="change-btn">Change</button>
+              </div>
 
-              <input
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                onChange={handleChange}
-              />
+              <h3 className="sub-title">Traveller Details</h3>
 
-              <input
-                type="text"
-                placeholder="Mobile Number"
-                name="mobile"
-                onChange={handleChange}
-              />
+              {/* COUNTER */}
+              <div className="counter">
+                <button onClick={removeTraveller}>−</button>
+                <span>{travellers.length}</span>
+                <button onClick={addTraveller}>+</button>
+              </div>
 
-              <input
-                type="number"
-                placeholder="Number of Travellers"
-                name="travellers"
-                onChange={handleChange}
-              />
+              {/* TRAVELLERS */}
+              {travellers.map((t, i) => (
+                <div key={i} className="traveller-box">
+                  <input
+                    type="text"
+                    placeholder={`Traveller ${i + 1} Name`}
+                    value={t.name}
+                    onChange={(e) =>
+                      handleTravellerChange(i, "name", e.target.value)
+                    }
+                  />
+                  <input
+                    type="number"
+                    placeholder="Age"
+                    value={t.age}
+                    onChange={(e) =>
+                      handleTravellerChange(i, "age", e.target.value)
+                    }
+                  />
+                </div>
+              ))}
 
-              <input
-                type="date"
-                name="date"
-                onChange={handleChange}
-              />
+              {/* SPECIAL REQUEST */}
+              <textarea placeholder="📝 Any special request (optional)"></textarea>
 
-              <textarea
-                placeholder="Special Requests"
-                name="special"
-                onChange={handleChange}
-              ></textarea>
+              {/* NOTE */}
+              <div className="note-box">
+                ⚠️ This is a booking request. Our team will contact you to confirm and complete the process.
+              </div>
 
-              <button
-                className="confirm-btn"
-                onClick={handleSubmit}
-              >
-                Confirm Booking
+              {/* BUTTON */}
+              <button className="confirm-btn" onClick={handleSubmit}>
+                🔒 Send Booking Request
               </button>
 
             </div>
@@ -139,20 +155,40 @@ function Booking() {
           </div>
 
 
-          {/* RIGHT SUMMARY */}
+          {/* RIGHT */}
           <div className="booking-right">
 
-            <div className="summary-card">
+            <div className="summary-card glass">
 
-              <h3>Booking Summary</h3>
+              <h3 className="section-title">Booking Summary</h3>
 
-              <p><strong>Package :</strong> {id}</p>
-              <p><strong>Duration :</strong> 5 Days</p>
-              <p><strong>Hotel :</strong> Premium Stay</p>
-              <p><strong>Meals :</strong> Breakfast Included</p>
+              <p><strong>Package :</strong> {data.name}</p>
+              <p><strong>Duration :</strong> {data.duration}</p>
+              <p><strong>Hotel :</strong> {data.hotel}</p>
+              <p><strong>Meals :</strong> {data.meals}</p>
 
+              <hr />
+
+              <p><strong>Price / Person :</strong> ₹ {data.price}</p>
+              <p><strong>Travellers :</strong> {travellers.length}</p>
+
+              {/* TOTAL */}
               <div className="price-box">
-                ₹ 25,000
+                ₹ {totalCost}
+              </div>
+
+              {/* SEATS */}
+              <div className={`seat-box ${data.seatsLeft <= 3 ? "low" : ""}`}>
+                {data.seatsLeft > 0
+                  ? `🔥 Only ${data.seatsLeft} seats left out of ${data.totalSeats}`
+                  : "❌ Sold Out"}
+              </div>
+
+              {/* TRUST */}
+              <div className="trust">
+                🔒 Secure Inquiry <br />
+                📞 Verified Travel Partner <br />
+                ⭐ 4.7 Rated Experience
               </div>
 
             </div>
@@ -166,7 +202,6 @@ function Booking() {
     </div>
 
   );
-
 }
 
 export default Booking;
