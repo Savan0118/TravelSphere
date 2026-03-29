@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import "./BudgetPlanner.css";
+import Sidebar from "./Sidebar";
 import { useNavigate } from "react-router-dom";
 
 function BudgetPlanner() {
@@ -15,13 +16,19 @@ function BudgetPlanner() {
     rooms: "",
     meals: "",
     activities: "",
-    maxDist: ""
+    maxDist: "",
+    destinationType: "",
+    travelStyle: "",
+    localTransport: "",
+    foodPreference: "",
+    guide: "",
+    buffer: ""
   });
 
   const handleChange = (e) => {
     let value = e.target.value;
 
-    if (["days", "travelers", "rooms", "maxDist"].includes(e.target.name)) {
+    if (["days", "travelers", "rooms", "maxDist", "buffer"].includes(e.target.name)) {
       value = Math.max(0, Number(value));
     }
 
@@ -33,81 +40,66 @@ function BudgetPlanner() {
 
   const calculateBudget = () => {
 
-    if (!form.days || !form.travelers || !form.travelMode || !form.hotel) return;
+    const { days, travelers } = form;
+    if (!days || !travelers) return;
 
-    const days = Number(form.days);
-    const people = Number(form.travelers);
+    let total = 0;
 
-    let total = days * people * 1200;
+    const d = Number(days);
+    const p = Number(travelers);
 
-    if (form.travelMode === "bus") total += form.maxDist * 2 * people;
-    if (form.travelMode === "train") total += form.maxDist * 4 * people;
-    if (form.travelMode === "flight") total += form.maxDist * 10 * people;
+    // Base cost
+    total += d * p * 1200;
 
-    if (form.hotel === "standard") total += days * 1500 * form.rooms;
-    if (form.hotel === "premium") total += days * 3000 * form.rooms;
-    if (form.hotel === "luxury") total += days * 6000 * form.rooms;
+    // Travel Mode
+    if (form.travelMode === "bus") total += form.maxDist * 2 * p;
+    if (form.travelMode === "train") total += form.maxDist * 4 * p;
+    if (form.travelMode === "flight") total += form.maxDist * 10 * p;
 
-    if (form.meals === "yes") total += days * people * 800;
+    // Hotel
+    if (form.hotel === "standard") total += d * 1500 * form.rooms;
+    if (form.hotel === "premium") total += d * 3000 * form.rooms;
+    if (form.hotel === "luxury") total += d * 6000 * form.rooms;
 
+    // Meals
+    if (form.meals === "yes") total += d * p * 800;
+
+    // Activities
     if (form.activities === "basic") total += 2000;
-    if (form.activities === "adventure") total += 5000;
-    if (form.activities === "premium") total += 9000;
+    if (form.activities === "adventure") total += 6000;
+    if (form.activities === "premium") total += 10000;
 
-    navigate("/budget-result", { state: { form, total } });
+    // Local Transport
+    if (form.localTransport === "cab") total += d * 2000;
+    if (form.localTransport === "bike") total += d * 800;
+
+    // Guide
+    if (form.guide === "yes") total += d * 1500;
+
+    // Travel Style multiplier
+    if (form.travelStyle === "budget") total *= 0.9;
+    if (form.travelStyle === "luxury") total *= 1.3;
+
+    // Buffer %
+    if (form.buffer) total += (total * form.buffer) / 100;
+
+    navigate("/budget-result", { state: { form, total: Math.round(total) } });
   };
 
   return (
 
     <div className="home">
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
-        <div className="sidebar-top">
+      {/* ✅ SIDEBAR */}
+      <Sidebar />
 
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-          <ul className="menu">
-            <li onClick={() => navigate("/home")}>🏠 Home</li>
-            <li onClick={() => navigate("/search")}>🔍 Explore</li>
-            <li onClick={() => navigate("/journeys")}>🗺️ My Journeys</li>
-            <li className="active">💰 Budget Planner</li>
-            <li onClick={() => navigate("/about")}>ℹ️ About Us</li>
-            <li onClick={() => navigate("/weather")}>🌦️ Weather</li>
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            ⏻ Log Out
-          </div>
-        </div>
-
-      </div>
-
-      {/* MAIN */}
       <div className="main">
 
         <div className="banner budget-banner">
-
           <div className="banner-text">
             <h1>Plan Your Trip Budget</h1>
-            <p>Estimate your travel expenses easily</p>
+            <p>Get a realistic travel cost estimate based on your preferences</p>
           </div>
-
-          {/* ✅ ADDED PROFILE ICON */}
-          <img
-            className="profile"
-            onClick={() => navigate("/profile")}
-            style={{ cursor: "pointer" }}
-          />
-
         </div>
 
         <div className="content-area">
@@ -124,6 +116,27 @@ function BudgetPlanner() {
               <div>
                 <label>Number of Travelers</label>
                 <input type="number" name="travelers" onChange={handleChange} />
+              </div>
+
+              <div>
+                <label>Destination Type</label>
+                <select name="destinationType" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option>Mountains</option>
+                  <option>Beach</option>
+                  <option>City</option>
+                  <option>Spiritual</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Travel Style</label>
+                <select name="travelStyle" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="budget">Budget</option>
+                  <option value="standard">Standard</option>
+                  <option value="luxury">Luxury</option>
+                </select>
               </div>
 
               <div>
@@ -161,6 +174,16 @@ function BudgetPlanner() {
               </div>
 
               <div>
+                <label>Food Preference</label>
+                <select name="foodPreference" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option>Veg</option>
+                  <option>Non-Veg</option>
+                  <option>Mixed</option>
+                </select>
+              </div>
+
+              <div>
                 <label>Activities</label>
                 <select name="activities" onChange={handleChange}>
                   <option value="">Select</option>
@@ -171,8 +194,32 @@ function BudgetPlanner() {
               </div>
 
               <div>
+                <label>Local Transport</label>
+                <select name="localTransport" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="cab">Cab</option>
+                  <option value="bike">Bike</option>
+                  <option value="public">Public Transport</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Guide Required</label>
+                <select name="guide" onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
                 <label>Distance (km)</label>
                 <input type="number" name="maxDist" onChange={handleChange} />
+              </div>
+
+              <div>
+                <label>Extra Buffer (%)</label>
+                <input type="number" name="buffer" placeholder="Recommended 10-15%" onChange={handleChange} />
               </div>
 
             </div>
@@ -188,9 +235,7 @@ function BudgetPlanner() {
       </div>
 
     </div>
-
   );
-
 }
 
 export default BudgetPlanner;

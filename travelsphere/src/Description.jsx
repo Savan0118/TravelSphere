@@ -46,7 +46,168 @@ function Description() {
       ]
     },
 
-    // (rest unchanged...)
+    kashmir: {
+      title: "Kashmir Paradise Tour",
+      location: "Srinagar, Jammu & Kashmir",
+      category: "Nature / Mountains",
+      vibe: "Calm, Scenic, Romantic",
+      groupType: "Couples, Family, Friends",
+      duration: "6 Days / 5 Nights",
+      price: "₹28,000",
+      travelDates: "10 Apr 2027 – 15 Apr 2027",
+      pickup: "Srinagar International Airport",
+      dropPoint: "Srinagar International Airport",
+      transport: "Private cab + Shikara ride",
+      season: "Apr – Jun",
+      hotel: "WelcomHeritage Gurkha Houseboats",
+      room: "Luxury Lake View Suite",
+      meals: "Breakfast + Dinner",
+      about:
+        "Experience heaven on earth with breathtaking valleys, Dal Lake shikara rides and snow-covered mountains. Visit Gulmarg, Sonmarg and Pahalgam while enjoying peaceful natural beauty.",
+      inclusions: [
+        "Airport pickup and drop",
+        "5 nights stay (hotel + houseboat)",
+        "Daily breakfast and dinner",
+        "Local sightseeing by private cab",
+        "Shikara ride on Dal Lake"
+      ],
+      itinerary: [
+        "Day 1: Arrival Srinagar + Houseboat Stay",
+        "Day 2: Gulmarg Visit",
+        "Day 3: Sonmarg Trip",
+        "Day 4: Pahalgam Tour",
+        "Day 5: Local Market + Shikara Ride",
+        "Day 6: Departure"
+      ]
+    },
+
+    amberfort: {
+      title: "Amber Fort Royal Tour",
+      location: "Jaipur, Rajasthan",
+      category: "Heritage / Royal",
+      vibe: "Cultural, Grand, Historic",
+      groupType: "Family, Couples, Friends",
+      duration: "3 Days / 2 Nights",
+      price: "₹9,500",
+      travelDates: "04 Dec 2026 – 06 Dec 2026",
+      pickup: "Jaipur Airport",
+      dropPoint: "Jaipur Railway Station",
+      transport: "Private cab with guide",
+      season: "Oct – Mar",
+      hotel: "Alsisar Haveli Jaipur",
+      room: "Royal Heritage Room",
+      meals: "Breakfast + Dinner",
+      about:
+        "Explore the royal heritage of Jaipur with a visit to Amber Fort, Nahargarh Fort and Hawa Mahal. Experience traditional markets, local culture and majestic Rajput architecture.",
+      inclusions: [
+        "Airport/station transfer",
+        "2 nights heritage stay",
+        "Breakfast and dinner",
+        "Local sightseeing",
+        "Fort entry assistance"
+      ],
+      itinerary: [
+        "Day 1: Jaipur Arrival + Local Markets",
+        "Day 2: Amber Fort + Nahargarh Fort",
+        "Day 3: Hawa Mahal + Departure"
+      ]
+    },
+
+    gateway: {
+      title: "Gateway of India City Escape",
+      location: "Mumbai, Maharashtra",
+      category: "City / Coastal",
+      vibe: "Vibrant, Urban, Energetic",
+      groupType: "Friends, Couples, Solo",
+      duration: "2 Days / 1 Night",
+      price: "₹6,000",
+      travelDates: "14 Jan 2027 – 15 Jan 2027",
+      pickup: "Mumbai Airport",
+      dropPoint: "Mumbai Central Station",
+      transport: "Private cab + Ferry ride",
+      season: "Nov – Feb",
+      hotel: "The Gordon House Hotel",
+      room: "Sea View Room",
+      meals: "Breakfast",
+      about:
+        "Discover Mumbai’s vibrant lifestyle with a visit to Gateway of India, Marine Drive and Elephanta Caves. Enjoy nightlife, shopping and coastal vibes.",
+      inclusions: [
+        "Airport/station transfer",
+        "1 night hotel stay",
+        "Breakfast included",
+        "Gateway of India visit",
+        "Ferry ride assistance"
+      ],
+      itinerary: [
+        "Day 1: Gateway Visit + Ferry Ride",
+        "Day 2: Marine Drive + Shopping + Departure"
+      ]
+    },
+    varanasi: {
+      title: "Spiritual Varanasi Journey",
+      location: "Varanasi, Uttar Pradesh",
+      category: "Spiritual / Cultural",
+      vibe: "Calm, Sacred, Traditional",
+      groupType: "Family, Solo, Seniors",
+      duration: "5 Days / 4 Nights",
+      price: "₹14,000",
+      travelDates: "08 Oct 2026 – 12 Oct 2026",
+      pickup: "Varanasi Junction Railway Station",
+      dropPoint: "Lal Bahadur Shastri Airport",
+      transport: "Private cab + walking tour",
+      season: "Oct – Mar",
+      hotel: "BrijRama Palace",
+      room: "Premium River Facing Room",
+      meals: "Breakfast Only",
+      about:
+        "Experience the spiritual heart of India in Varanasi. Witness the mesmerizing Ganga Aarti, explore ancient temples and enjoy peaceful boat rides on the sacred Ganges river.",
+      inclusions: [
+        "Station/airport transfer",
+        "4 nights hotel stay",
+        "Daily breakfast",
+        "Ganga Aarti experience",
+        "Boat ride on Ganges",
+        "Temple and local market tour"
+      ],
+      itinerary: [
+        "Day 1: Arrival + Evening Ganga Aarti",
+        "Day 2: Temple Tour",
+        "Day 3: Boat Ride + Local Markets",
+        "Day 4: Sarnath Visit",
+        "Day 5: Departure"
+      ]
+    },
+
+    tajmahal: {
+      title: "Taj Mahal Heritage Tour",
+      location: "Agra, Uttar Pradesh",
+      category: "Heritage / Romantic",
+      vibe: "Elegant, Historic, Peaceful",
+      groupType: "Couples, Family, Friends",
+      duration: "2 Days / 1 Night",
+      price: "₹2,500",
+      travelDates: "20 Nov 2026 – 21 Nov 2026",
+      pickup: "Agra Cantt Railway Station",
+      dropPoint: "Agra Cantt Railway Station",
+      transport: "Private cab + local guide",
+      season: "Oct – Feb",
+      hotel: "Taj Hotel & Convention Centre",
+      room: "Deluxe Mughal Room",
+      meals: "Breakfast",
+      about:
+        "Visit the iconic Taj Mahal, one of the Seven Wonders of the World. Explore Mughal architecture including Agra Fort and enjoy a sunset view from Mehtab Bagh.",
+      inclusions: [
+        "Pickup and drop",
+        "1 night hotel stay",
+        "Breakfast included",
+        "Local sightseeing by cab",
+        "Professional guide support"
+      ],
+      itinerary: [
+        "Day 1: Arrival + Taj Mahal Visit",
+        "Day 2: Agra Fort + Local Shopping"
+      ]
+    },
   };
 
   const data = packages[id];

@@ -290,7 +290,7 @@ function Home() {
 
 
 
-                <button>
+                <button onClick={()=>navigate("/description/ladakh")}>
                   View Details
                 </button>
 
