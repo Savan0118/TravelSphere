@@ -32,20 +32,21 @@ function Booking() {
 
   const data = packages[id];
 
-  // fallback safety
-  if (!data) {
-    return <h2 style={{ padding: "40px" }}>Package Not Found</h2>;
-  }
-
-  // Simulated logged-in user
+  // Simulated logged-in user (moved up)
   const user = {
     name: "Harish Patel",
     email: "harishpatel24@gmail.com"
   };
 
+  // Hook moved to top level (before any conditions)
   const [travellers, setTravellers] = useState([
     { name: user.name, age: "" }
   ]);
+
+  // fallback safety
+  if (!data) {
+    return <h2 style={{ padding: "40px" }}>Package Not Found</h2>;
+  }
 
   const handleTravellerChange = (index, field, value) => {
     const updated = [...travellers];
