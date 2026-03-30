@@ -3,6 +3,7 @@ import "./Home.css";
 import "./BudgetPlanner.css";
 import Sidebar from "./Sidebar";
 import { useNavigate } from "react-router-dom";
+import BudgetResult from "./BudgetResult";
 
 function BudgetPlanner() {
 
@@ -38,7 +39,7 @@ function BudgetPlanner() {
     });
   };
 
-  const calculateBudget = () => {
+  const BudgetResult = () => {
 
     const { days, travelers } = form;
     if (!days || !travelers) return;
@@ -224,7 +225,7 @@ function BudgetPlanner() {
 
             </div>
 
-            <button className="generate-btn" onClick={calculateBudget}>
+            <button className="generate-btn" onClick={BudgetResult}>
               Generate Budget
             </button>
 

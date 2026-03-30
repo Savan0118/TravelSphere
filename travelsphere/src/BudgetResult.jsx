@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import "./BudgetResult.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 import {
   Chart as ChartJS,
@@ -9,30 +9,45 @@ import {
   Tooltip,
   Legend
 } from "chart.js";
-
-import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Doughnut } from "react-chartjs-2";
 
-ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function BudgetResult() {
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const { total } = location.state || { total: 0 };
-
   const [expenses, setExpenses] = useState([
-    { category: "Accommodation", amount: total * 0.40, color: "#d10d0d" },
-    { category: "Travel", amount: total * 0.25, color: "#34b85b" },
-    { category: "Dining", amount: total * 0.20, color: "#b89e0b" },
-    { category: "Activities", amount: total * 0.15, color: "#392fc4" }
+    {
+      title: "Accommodation",
+      desc: "4 Rooms · ₹1500/night",
+      amount: 40000,
+      color: "#e74c3c"
+    },
+    {
+      title: "Transport",
+      desc: "Bus Travel · 300 km",
+      amount: 9600,
+      color: "#2ecc71"
+    },
+    {
+      title: "Food & Activities",
+      desc: "₹950/person · 4 travellers",
+      amount: 17000,
+      color: "#f1c40f"
+    },
+    {
+      title: "Additional",
+      desc: "Shopping & misc",
+      amount: 12200,
+      color: "#6c5ce7"
+    }
   ]);
 
-  const totalAmount = expenses.reduce((sum, item) => sum + item.amount, 0);
+  const total = expenses.reduce((a, b) => a + b.amount, 0);
+  const buffer = Math.round(total * 0.1);
+  const finalTotal = total + buffer;
 
   const chartData = {
-    labels: expenses.map(e => e.category),
+    labels: expenses.map(e => e.title),
     datasets: [
       {
         data: expenses.map(e => e.amount),
@@ -42,188 +57,103 @@ function BudgetResult() {
     ]
   };
 
-  const chartOptions = {
-    cutout: "65%",
-    plugins: {
-      legend: {
-        position: "top"
-      },
-      datalabels: {
-        color: "#fff",
-        font: {
-          weight: "bold",
-          size: 14
-        },
-        formatter: (value) => {
-          const percent = ((value / totalAmount) * 100).toFixed(2);
-          return percent + "%";
-        }
-      }
-    }
-  };
-
-  const handleEdit = (index) => {
-
-    const value = prompt("Enter new amount");
-
-    if (!value || isNaN(value)) return;
-
-    const updated = [...expenses];
-    updated[index].amount = Number(value);
-
-    setExpenses(updated);
-  };
-
-  const handleDelete = (index) => {
-
-    const updated = expenses.filter((_, i) => i !== index);
-    setExpenses(updated);
-  };
-
   return (
-
     <div className="home">
 
-      <div className="sidebar">
+      {/* SIDEBAR */}
+      <Sidebar />
 
-        <div className="sidebar-top">
-
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-          <ul className="menu">
-
-            <li onClick={() => navigate("/home")}>
-              <span style={{ fontSize: "18px" }}>🏠</span> Home
-            </li>
-
-            <li onClick={() => navigate("/search")}>
-              <span style={{ fontSize: "18px" }}>🔍</span> Explore
-            </li>
-
-            <li onClick={() => navigate("/budget")}>
-              <span style={{ fontSize: "18px" }}>💰</span> Budget Planner
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontSize: "18px" }}>🌦️</span> Weather
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-
-          <div
-            className="logout"
-            onClick={() => navigate("/")}
-          >
-            <span style={{ fontSize: "20px" }}>⏻</span>
-            Log Out
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {/* MAIN */}
       <div className="main">
 
+        {/* BANNER */}
         <div className="banner budget-banner">
-
+          <div className="banner-overlay"></div>
           <div className="banner-text">
-
-            <h1>Budget Breakdown</h1>
-
-            <p>Category wise analysis of your trip budget</p>
-
+            <h1>Trip Budget Result</h1>
+            <p>Smart breakdown of your travel expenses</p>
           </div>
-
-          {/* ✅ ADDED PROFILE ICON */}
-          <img
-            className="profile"
-            onClick={() => navigate("/profile")}
-            style={{ cursor: "pointer" }}
-          />
-
         </div>
 
         <div className="content-area">
 
-          <div className="result-layout">
+          {/* MAIN GLASS CONTAINER */}
+          <div className="result-container">
 
-            <div className="chart-box">
+            {/* TOP SECTION */}
+            <div className="top-section">
 
-              <Doughnut
-                data={chartData}
-                options={chartOptions}
-              />
+              {/* CHART */}
+              <div className="chart-card glass">
+                <h3>Budget Summary</h3>
+
+                <div className="chart-wrapper">
+                  <Doughnut data={chartData} />
+                  <div className="chart-center">
+                    ₹ {total}
+                    <span>Total</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* SUMMARY */}
+              <div className="summary-card glass">
+                <h3>Budget Overview</h3>
+
+                {expenses.map((e, i) => (
+                  <div key={i} className="summary-row">
+                    <span>{e.title}</span>
+                    <span>₹ {e.amount}</span>
+                  </div>
+                ))}
+
+                <div className="summary-row buffer">
+                  <span>Buffer (10%)</span>
+                  <span>₹ {buffer}</span>
+                </div>
+
+                <hr />
+
+                <div className="summary-row total">
+                  <span>Total</span>
+                  <span>₹ {finalTotal}</span>
+                </div>
+              </div>
 
             </div>
 
-            <div className="expense-cards">
+            {/* EXPENSE LIST */}
+            <div className="expense-section glass">
 
-              <h2>
-                Total Budget : ₹ {totalAmount.toLocaleString()}
-              </h2>
+              <div className="section-header">
+                <h3>Expense Breakdown</h3>
+                <button className="add-btn">+ Add Expense</button>
+              </div>
 
-              {expenses.map((item, index) => {
+              {expenses.map((e, i) => (
+                <div key={i} className="expense-card">
 
-                const percent = ((item.amount / totalAmount) * 100).toFixed(2);
+                  <div className="expense-left">
+                    <div
+                      className="color-dot"
+                      style={{ background: e.color }}
+                    ></div>
 
-                return (
-
-                  <div key={index} className="expense-card">
-
-                    <div className="expense-left">
-
-                      <span
-                        className="color-dot"
-                        style={{ background: item.color }}
-                      ></span>
-
-                      <div>
-
-                        <h4>{item.category}</h4>
-
-                        <p>{percent}%</p>
-
-                      </div>
-
+                    <div>
+                      <h4>{e.title}</h4>
+                      <p>{e.desc}</p>
                     </div>
-
-                    <div className="expense-right">
-
-                      ₹ {item.amount.toLocaleString()}
-
-                      <div className="actions">
-
-                        <button onClick={() => handleEdit(index)}>✏️</button>
-
-                        <button onClick={() => handleDelete(index)}>🗑</button>
-
-                      </div>
-
-                    </div>
-
                   </div>
 
-                );
+                  <div className="expense-right">
+                    ₹ {e.amount}
+                    <div className="actions">
+                      <button onClick={() => {}}>✏️</button>
+                      <button onClick={() => setExpenses(expenses.filter((_, idx) => idx !== i))}>🗑️</button>
+                    </div>
+                  </div>
 
-              })}
-
-              <button
-                className="back-btn"
-                onClick={() => navigate("/budget")}
-              >
-                Back
-              </button>
+                </div>
+              ))}
 
             </div>
 
@@ -231,12 +161,21 @@ function BudgetResult() {
 
         </div>
 
+        {/* STICKY FOOTER */}
+        <div className="bottom-bar">
+          <div className="trip-info">
+            👥 4 Travellers &nbsp; | &nbsp; 📅 5 Days &nbsp; | &nbsp; 📍 16 Mar 2027
+          </div>
+
+          <div className="final-box">
+            ₹ {finalTotal}
+            <button className="confirm-btn">Confirm Budget</button>
+          </div>
+        </div>
+
       </div>
-
     </div>
-
   );
-
 }
 
 export default BudgetResult;
