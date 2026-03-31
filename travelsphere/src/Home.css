@@ -124,6 +124,8 @@ body {
 /* BANNER */
 .banner {
   height: 240px;
+  min-height: 240px;
+  flex-shrink: 0;
   background-image: url("/Images/Home_Img.png");
   background-size: cover;
   background-position: center;

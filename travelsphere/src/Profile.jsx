@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function Profile() {
 
@@ -42,13 +43,18 @@ function Profile() {
   const [profile] = useState(getProfileData);
 
   const [image, setImage] = useState(
-    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
   );
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+        localStorage.setItem("profileImage", reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -57,39 +63,13 @@ function Profile() {
     <div className="home">
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-        <div className="sidebar-top">
-
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-          <ul className="menu">
-            <li onClick={() => navigate("/home")}>🏠 Home</li>
-            <li onClick={() => navigate("/search")}>🔍 Explore</li>
-            <li onClick={() => navigate("/journeys")}>🗺️ My Journeys</li>
-            <li onClick={() => navigate("/budget")}>💰 Budget Planner</li>
-            <li onClick={() => navigate("/about")}>ℹ️ About Us</li>
-            <li onClick={() => navigate("/weather")}>🌦️ Weather</li>
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            ⏻ Log Out
-          </div>
-        </div>
-      </div>
+      <Sidebar />
 
 
       {/* MAIN */}
       <div className="main">
 
-        <div className="banner profile-banner">
+        <div className="banner">
           <div className="banner-text">
             <h1>My Profile</h1>
             <p>Manage your account settings</p>

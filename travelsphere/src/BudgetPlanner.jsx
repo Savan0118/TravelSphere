@@ -9,6 +9,8 @@ function BudgetPlanner() {
 
   const navigate = useNavigate();
 
+  const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+
   const [form, setForm] = useState({
     days: "",
     travelers: "",
@@ -96,11 +98,17 @@ function BudgetPlanner() {
 
       <div className="main">
 
-        <div className="banner budget-banner">
+        <div className="banner">
           <div className="banner-text">
             <h1>Plan Your Trip Budget</h1>
             <p>Get a realistic travel cost estimate based on your preferences</p>
           </div>
+          <img
+            src={profileImg}
+            className="profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
+          />
         </div>
 
         <div className="content-area">

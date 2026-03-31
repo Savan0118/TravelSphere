@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import "./Search.css";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function Search() {
 
@@ -9,6 +10,10 @@ function Search() {
 
     /* ✅ ADDED STATE */
     const [searchText, setSearchText] = useState("");
+    const [travelDate, setTravelDate] = useState("");
+    const [guests, setGuests] = useState("");
+
+    const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
     return (
 
@@ -16,76 +21,7 @@ function Search() {
 
 
             {/* SIDEBAR */}
-            <div className="sidebar">
-
-
-                <div className="sidebar-top">
-
-
-                    <h2 className="logo">
-                        TravelSphere
-                    </h2>
-
-
-                    <p className="tagline">
-                        Discover. Plan. Experience.<br />
-                        Your gateway to unforgettable journeys
-                    </p>
-
-
-
-                    <ul className="menu">
-
-
-                        <li onClick={() => navigate("/home")}>
-                            <span style={{ fontSize: '18px' }}>🏠</span> Home
-                        </li>
-
-
-                        <li
-                            className="active"
-                            onClick={() => navigate("/search")}
-                        >
-                            <span style={{ fontSize: '18px' }}>🔍</span> Explore
-                        </li>
-
-
-                        <li
-                            onClick={() => navigate("/journeys")}
-                        >
-                             <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
-                        </li>
-
-
-                        <li onClick={() => navigate("/budget")}>
-                            <span style={{ fontSize: '18px' }}>💰</span> Budget Planner
-                        </li>
-
-
-                        <li
-                            onClick={() => navigate("/about")}
-                        >
-                            <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
-                        </li>
-
-                        <li onClick={() => navigate("/weather")}>
-                            <span style={{ fontsize: '18px' }}>🌦️</span> Weather
-                        </li>
-
-
-                    </ul>
-
-
-                </div>
-
-
-
-                    <div className="logout-container">
-                        <div className="logout" onClick={() => navigate("/")}>
-                            ⏻ Log Out
-                        </div>
-                    </div>
-                </div>
+            <Sidebar />
 
 
 
@@ -94,7 +30,7 @@ function Search() {
 
 
                 {/* BANNER */}
-                <div className="banner search-banner">
+                <div className="banner">
 
 
                     <div className="banner-text">
@@ -114,6 +50,7 @@ function Search() {
 
 
                     <img
+                        src={profileImg}
                         className="profile"
                         onClick={() => navigate("/profile")}
                         style={{ cursor: "pointer" }}
@@ -125,11 +62,13 @@ function Search() {
 
 
                         <div className="search-pill-item">
-
-                            Choose Destination
-
-                            <span className="pill-icon">˅</span>
-
+                            <input
+                                type="text"
+                                placeholder="Choose Destination"
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                                style={{ border: "none", background: "transparent", outline: "none", fontWeight: "600", color: "#1a1a1a", fontSize: "13px", width: "135px" }}
+                            />
                         </div>
 
 
@@ -137,9 +76,12 @@ function Search() {
 
 
                         <div className="search-pill-item">
-
-                            Select Travel Date
-
+                            <input
+                                type="date"
+                                value={travelDate}
+                                onChange={(e) => setTravelDate(e.target.value)}
+                                style={{ border: "none", background: "transparent", outline: "none", fontWeight: "600", color: "#1a1a1a", fontSize: "13px", width: "130px" }}
+                            />
                         </div>
 
 
@@ -147,11 +89,14 @@ function Search() {
 
 
                         <div className="search-pill-item">
-
-                            Guests : 2 Adults
-
-                            <span className="pill-icon">˅</span>
-
+                            <input
+                                type="number"
+                                min="1"
+                                placeholder="Guests"
+                                value={guests}
+                                onChange={(e) => setGuests(e.target.value)}
+                                style={{ border: "none", background: "transparent", outline: "none", fontWeight: "600", color: "#1a1a1a", fontSize: "13px", width: "80px" }}
+                            />
                         </div>
 
 
@@ -248,49 +193,49 @@ function Search() {
                         {/* CARD 1 */}
                         {("ladakh".includes(searchText.toLowerCase()) || searchText === "") && (
 
-                        <div className="package search-card">
+                            <div className="package search-card">
 
 
-                            <img src="/Images/Home_Img.png" alt="Ladakh" />
+                                <img src="/Images/Home_Img.png" alt="Ladakh" />
 
 
-                            <div className="package-info">
+                                <div className="package-info">
 
 
-                                <h3>Ladakh</h3>
+                                    <h3>Ladakh</h3>
 
 
-                                <p>
+                                    <p>
 
-                                    Ladakh is a high-altitude cold desert famous for its stark Himalayan landscapes.
+                                        Ladakh is a high-altitude cold desert famous for its stark Himalayan landscapes.
 
-                                </p>
-
-
-                                <div className="package-bottom">
+                                    </p>
 
 
-                                    <div className="price-tag">
+                                    <div className="package-bottom">
 
-                                        <span>7 days</span>
 
-                                        <span>₹70,000</span>
+                                        <div className="price-tag">
+
+                                            <span>7 days</span>
+
+                                            <span>₹70,000</span>
+
+                                        </div>
+
+
+                                        <button onClick={() => navigate("/description/ladakh")}>
+                                            View Details
+                                        </button>
+
 
                                     </div>
-
-
-                                    <button onClick={()=>navigate("/description/ladakh")}>
-                                    View Details
-                                    </button>
 
 
                                 </div>
 
 
                             </div>
-
-
-                        </div>
 
                         )}
 
@@ -299,49 +244,49 @@ function Search() {
                         {/* CARD 2 */}
                         {("varanasi".includes(searchText.toLowerCase()) || searchText === "") && (
 
-                        <div className="package search-card">
+                            <div className="package search-card">
 
 
-                            <img src="/Images/Home_Img.png" alt="Varanasi" />
+                                <img src="/Images/Home_Img.png" alt="Varanasi" />
 
 
-                            <div className="package-info">
+                                <div className="package-info">
 
 
-                                <h3>Varanasi</h3>
+                                    <h3>Varanasi</h3>
 
 
-                                <p>
+                                    <p>
 
-                                    One of the oldest cities in the world famous for Ganga Aarti.
+                                        One of the oldest cities in the world famous for Ganga Aarti.
 
-                                </p>
-
-
-                                <div className="package-bottom">
+                                    </p>
 
 
-                                    <div className="price-tag">
+                                    <div className="package-bottom">
 
-                                        <span>5 days</span>
 
-                                        <span>₹14,000</span>
+                                        <div className="price-tag">
+
+                                            <span>5 days</span>
+
+                                            <span>₹14,000</span>
+
+                                        </div>
+
+
+                                        <button onClick={() => navigate("/description/varanasi")}>
+                                            View Details
+                                        </button>
+
 
                                     </div>
-
-
-                                    <button onClick={()=>navigate("/description/varanasi")}>
-                                     View Details
-                                    </button>
 
 
                                 </div>
 
 
                             </div>
-
-
-                        </div>
 
                         )}
 
@@ -350,49 +295,49 @@ function Search() {
                         {/* CARD 3 */}
                         {("taj mahal".includes(searchText.toLowerCase()) || searchText === "") && (
 
-                        <div className="package search-card">
+                            <div className="package search-card">
 
 
-                            <img src="/Images/Home_Img.png" alt="Taj Mahal" />
+                                <img src="/Images/Home_Img.png" alt="Taj Mahal" />
 
 
-                            <div className="package-info">
+                                <div className="package-info">
 
 
-                                <h3>Taj Mahal</h3>
+                                    <h3>Taj Mahal</h3>
 
 
-                                <p>
+                                    <p>
 
-                                    One of the Seven Wonders of the World.
+                                        One of the Seven Wonders of the World.
 
-                                </p>
-
-
-                                <div className="package-bottom">
+                                    </p>
 
 
-                                    <div className="price-tag">
+                                    <div className="package-bottom">
 
-                                        <span>2 days</span>
 
-                                        <span>₹2500</span>
+                                        <div className="price-tag">
+
+                                            <span>2 days</span>
+
+                                            <span>₹2500</span>
+
+                                        </div>
+
+
+                                        <button onClick={() => navigate("/description/tajmahal")}>
+                                            View Details
+                                        </button>
+
 
                                     </div>
-
-
-                                    <button onClick={()=>navigate("/description/tajmahal")}>
-                                     View Details
-                                    </button>
 
 
                                 </div>
 
 
                             </div>
-
-
-                        </div>
 
                         )}
 

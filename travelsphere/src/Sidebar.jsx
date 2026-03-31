@@ -27,42 +27,42 @@ function Sidebar() {
             className={isActive("/home") ? "active" : ""}
             onClick={() => navigate("/home")}
           >
-            🏠 Home
+            <span style={{ fontSize: '18px' }}>🏠</span> Home
           </li>
 
           <li
             className={isActive("/search") ? "active" : ""}
             onClick={() => navigate("/search")}
           >
-            🔍 Explore
+            <span style={{ fontSize: '18px' }}>🔍</span> Explore
           </li>
 
           <li
             className={isActive("/journeys") ? "active" : ""}
             onClick={() => navigate("/journeys")}
           >
-            🗺️ My Journeys
+            <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
           </li>
 
           <li
             className={isActive("/budget") ? "active" : ""}
             onClick={() => navigate("/budget")}
           >
-            💰 Budget Planner
+            <span style={{ fontSize: '18px' }}>💰</span> Budget Planner
           </li>
 
           <li
             className={isActive("/about") ? "active" : ""}
             onClick={() => navigate("/about")}
           >
-            ℹ️ About Us
+            <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
           </li>
 
           <li
             className={isActive("/weather") ? "active" : ""}
             onClick={() => navigate("/weather")}
           >
-            🌦️ Weather
+            <span style={{ fontSize: '18px' }}>🌦️</span> Weather
           </li>
 
         </ul>

@@ -8,6 +8,8 @@ function MyJourneys() {
 
   const navigate = useNavigate();
 
+  const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+
   return (
 
     <div className="home">
@@ -24,12 +26,18 @@ function MyJourneys() {
             <h1>Completed My Adventure</h1>
             <p>Explore the world with ease</p>
           </div>
+          <img
+            src={profileImg}
+            className="profile"
+            onClick={() => navigate("/profile")}
+            style={{ cursor: "pointer" }}
+          />
         </div>
 
         {/* CONTENT */}
         <div className="content-area">
 
-          <h2 className="section-title">My Trips</h2>
+          <h2 className="section-title" style={{ marginBottom: "25px" }}>My Trips</h2>
 
           {/* CARD */}
           <div className="trip-card premium">
@@ -55,7 +63,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={()=>navigate("/description/ladakh")}
+                onClick={() => navigate("/description/ladakh")}
               >
                 View Details
               </button>
@@ -88,7 +96,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={()=>navigate("/description/varanasi")}
+                onClick={() => navigate("/description/varanasi")}
               >
                 View Details
               </button>
@@ -121,7 +129,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={()=>navigate("/description/taj")}
+                onClick={() => navigate("/description/taj")}
               >
                 View Details
               </button>

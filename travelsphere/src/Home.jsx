@@ -1,10 +1,13 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function Home() {
 
   const navigate = useNavigate();
+
+  const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
   return (
 
@@ -12,71 +15,7 @@ function Home() {
 
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-
-
-        <div className="sidebar-top">
-
-
-          <h2 className="logo">
-            TravelSphere
-          </h2>
-
-
-          <p className="tagline">
-            Discover. Plan. Experience.<br />
-            Your gateway to unforgettable journeys
-          </p>
-
-
-
-          <ul className="menu">
-
-
-            <li
-              className="active"
-              onClick={() => navigate("/home")}
-            >
-              <span style={{ fontSize: '18px' }}>🏠</span> Home
-            </li>
-
-
-            {/* ✅ ONLY THIS LINE ADDED */}
-            <li
-              onClick={() => navigate("/search")}
-            >
-              <span style={{ fontSize: '18px' }}>🔍</span> Explore
-            </li>
-
-
-            <li
-              onClick={() => navigate("/journeys")}
-            >
-              <span style={{ fontSize: '18px' }}>🗺️</span> My Journeys
-            </li>
-
-
-            <li onClick={() => navigate("/budget")}>
-              <span style={{ fontSize: '18px' }}>💰</span> Budget Planner
-            </li>
-
-
-            <li onClick={() => navigate("/about")}>
-              <span style={{ fontSize: '18px' }}>ℹ️</span> About Us
-            </li>
-
-            <li onClick={() => navigate("/weather")}>
-              <span style={{ fontsize: '18px' }}>🌦️</span> Weather
-            </li>
-          </ul>
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            ⏻ Log Out
-          </div>
-        </div>
-      </div>
+      <Sidebar />
 
       {/* MAIN */}
       <div className="main">
@@ -104,6 +43,7 @@ function Home() {
 
 
           <img
+            src={profileImg}
             className="profile"
             onClick={() => navigate("/profile")}
             style={{ cursor: "pointer" }}

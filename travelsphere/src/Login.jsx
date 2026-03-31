@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
 
@@ -81,6 +83,39 @@ function Login() {
         >
           Login
         </button>
+
+        <div style={{ margin: "15px 0", display: "flex", justifyContent: "center" }}>
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              console.log(credentialResponse);
+              try {
+                const decoded = jwtDecode(credentialResponse.credential);
+                console.log("Decoded User Info:", decoded);
+                
+                const profileData = {
+                  name: decoded.name,
+                  email: decoded.email,
+                };
+                localStorage.setItem("profileData", JSON.stringify(profileData));
+                
+                if (decoded.picture) {
+                  localStorage.setItem("profileImage", decoded.picture);
+                }
+              } catch (error) {
+                console.error("Error decoding token:", error);
+              }
+
+              if (role === "Admin") {
+                navigate("/admin");
+              } else {
+                navigate("/home");
+              }
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+        </div>
 
         <div className="register">
           Don’t have an account ?
