@@ -1,0 +1,92 @@
+.trip-scroll {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Card */
+
+.trip-card-detail {
+  background: #e4e6e4;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Header */
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Status */
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.upcoming {
+  background: #2a8153;
+  color: white;
+}
+
+.status.completed {
+  background: #6a5acd;
+  color: white;
+}
+
+/* Price */
+
+.price-box {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #2a8153;
+}
+
+/* Notes */
+
+.note {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+/* Buttons */
+
+.action-buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+.cancel-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.review-btn {
+  background: #2a8153;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: #ccc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}

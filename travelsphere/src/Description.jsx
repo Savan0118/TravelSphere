@@ -11,6 +11,7 @@ function Description() {
   const packages = {
     ladakh: {
       title: "Ladakh Adventure Tour",
+      image: "/Images/ladakh.png",
       location: "Ladakh, Jammu & Kashmir",
       category: "Adventure / Mountains",
       vibe: "Thrilling, Scenic, High-Altitude",
@@ -48,6 +49,7 @@ function Description() {
 
     kashmir: {
       title: "Kashmir Paradise Tour",
+      image: "/Images/kashmir.png",
       location: "Srinagar, Jammu & Kashmir",
       category: "Nature / Mountains",
       vibe: "Calm, Scenic, Romantic",
@@ -83,6 +85,7 @@ function Description() {
 
     amberfort: {
       title: "Amber Fort Royal Tour",
+      image: "/Images/amber_fort.png",
       location: "Jaipur, Rajasthan",
       category: "Heritage / Royal",
       vibe: "Cultural, Grand, Historic",
@@ -115,6 +118,7 @@ function Description() {
 
     gateway: {
       title: "Gateway of India City Escape",
+      image: "/Images/gateway_of_india.png",
       location: "Mumbai, Maharashtra",
       category: "City / Coastal",
       vibe: "Vibrant, Urban, Energetic",
@@ -145,6 +149,7 @@ function Description() {
     },
     varanasi: {
       title: "Spiritual Varanasi Journey",
+      image: "/Images/varanasi.png",
       location: "Varanasi, Uttar Pradesh",
       category: "Spiritual / Cultural",
       vibe: "Calm, Sacred, Traditional",
@@ -180,6 +185,7 @@ function Description() {
 
     tajmahal: {
       title: "Taj Mahal Heritage Tour",
+      image: "/Images/taj_mahal.png",
       location: "Agra, Uttar Pradesh",
       category: "Heritage / Romantic",
       vibe: "Elegant, Historic, Peaceful",
@@ -224,8 +230,12 @@ function Description() {
 
       <div className="main">
 
-        <div className="banner description-banner">
-          <div className="banner-overlay"></div>
+        <div
+          className="banner description-banner"
+          style={{
+            backgroundImage: `url(${data.image})`
+          }}>          
+        <div className="banner-overlay"></div>
         </div>
 
         <div className="content-area description-layout">

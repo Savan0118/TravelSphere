@@ -7,25 +7,23 @@ import Sidebar from "./Sidebar";
 function About() {
 
   const navigate = useNavigate();
-  
-  const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+
+  const profileImg =
+    localStorage.getItem("profileImage") ||
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
   return (
     <div className="home">
 
-      {/* SIDEBAR */}
       <Sidebar />
 
-
-      {/* MAIN */}
       <div className="main about-scroll">
 
         {/* BANNER */}
-        <div className="banner">
-
+        <div className="banner about-banner">
           <div className="banner-text">
-            <h1>About Us</h1>
-            <p>Explore what we do for you</p>
+            <h1>About TravelSphere</h1>
+            <p>Your smart companion for planning unforgettable journeys</p>
           </div>
 
           <img
@@ -34,72 +32,103 @@ function About() {
             onClick={() => navigate("/profile")}
             style={{ cursor: "pointer" }}
           />
-
         </div>
 
-
-        {/* CONTENT */}
         <div className="content-area">
 
-          {/* ABOUT CARD */}
+          {/* ABOUT */}
           <div className="about-card">
+            <p>
+              <b>TravelSphere</b> is designed to simplify travel planning by bringing
+              everything into one intelligent platform. Whether you're planning a
+              solo adventure, a family vacation, or a group trip, we help you make
+              better decisions with ease.
+            </p>
 
             <p>
-              <b>TravelSphere</b> was created with a simple idea — travel should feel exciting,
-              not overwhelming. We believe planning a trip should be as enjoyable as the journey itself.
-              From discovering beautiful destinations to organizing stays and bookings,
-              our platform brings everything together in one place.
-              <i> TravelSphere</i> helps travelers explore confidently,
-              plan easily, and create unforgettable memories without stress.
+              From exploring destinations to managing budgets, tracking journeys,
+              and organizing travel details, <i>TravelSphere</i> ensures that every
+              step of your journey is smooth, efficient, and enjoyable.
             </p>
+          </div>
+
+          {/* MISSION + VISION */}
+          <div className="about-grid">
+
+            <div className="about-box">
+              <h3>Our Mission</h3>
+              <p>
+                To make travel planning effortless and accessible by providing
+                users with smart tools, real-time insights, and a seamless
+                experience from start to finish.
+              </p>
+
+              <h3 style={{ marginTop: "20px" }}>Our Vision</h3>
+              <p>
+                To become a one-stop travel ecosystem where users can discover,
+                plan, and manage their trips with complete confidence.
+              </p>
+            </div>
+
+            <div className="about-box">
+              <h3>What We Offer</h3>
+              <ul>
+                <li>🌍 Smart destination exploration</li>
+                <li>📊 Budget planning & cost estimation</li>
+                <li>🧳 Journey tracking & history</li>
+                <li>🏨 Hotel and travel insights</li>
+                <li>📅 Organized trip management</li>
+              </ul>
+            </div>
 
           </div>
 
-
+          {/* PRIVACY + CONTACT */}
           <div className="about-grid">
 
-            {/* PRIVACY */}
             <div className="about-box">
-
               <h3>Privacy Policy</h3>
-
               <p>
-                <b>TravelSphere</b> collects basic information such as your name,
-                email, phone number and booking details to manage your travel experience.
-                Your data is used only for account and booking purposes.
-                We do not sell or share personal information with third parties
-                except when required for trip coordination.
+                We collect only essential information such as your name, email,
+                and travel preferences to enhance your experience.
+                Your data is securely stored and never sold to third parties.
               </p>
 
+              <p>
+                All information is used strictly for improving services and
+                assisting in your travel planning process.
+              </p>
             </div>
 
-
-            {/* CONTACT */}
             <div className="about-box">
-
-              <h3>Contact</h3>
+              <h3>Contact Us</h3>
 
               <p>
-                support@travelsphere.com<br />
-                +91 98765 43210<br />
-                Ahmedabad, India
+                📧 support@travelsphere.com <br />
+                📞 +91 98765 43210 <br />
+                📍 Rajkot, India
               </p>
 
-              <h3 style={{marginTop:"20px"}}>Quick Links</h3>
+              <h3 style={{ marginTop: "20px" }}>Our Team</h3>
 
               <p>
-                Privacy Policy | Terms & Conditions<br />
+                👤 tanisharathod15@gmail.com <br />
+                👤 savanpatel@gmail.com <br />
+                👤 vivekhadiya@gmail.com
+              </p>
+
+              <h3 style={{ marginTop: "20px" }}>Quick Links</h3>
+
+              <p>
+                Privacy Policy | Terms & Conditions <br />
                 © 2026 TravelSphere. All rights reserved.
               </p>
-
             </div>
 
           </div>
 
         </div>
-
       </div>
-
     </div>
   );
 }

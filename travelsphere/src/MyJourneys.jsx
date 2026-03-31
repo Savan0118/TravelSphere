@@ -43,7 +43,7 @@ function MyJourneys() {
           <div className="trip-card premium">
 
             <div className="trip-image">
-              <img src="/Images/Home_Img.png" alt="Ladakh" />
+              <img src="Images/ladakh.png" alt="Ladakh" />
             </div>
 
             <div className="trip-info">
@@ -63,7 +63,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={() => navigate("/description/ladakh")}
+                onClick={() => navigate("/trip-details/ladakh")}
               >
                 View Details
               </button>
@@ -76,7 +76,7 @@ function MyJourneys() {
           <div className="trip-card premium">
 
             <div className="trip-image">
-              <img src="/Images/Home_Img.png" alt="Varanasi" />
+              <img src="Images/varanasi.png" alt="Varanasi" />
             </div>
 
             <div className="trip-info">
@@ -96,7 +96,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={() => navigate("/description/varanasi")}
+                onClick={() => navigate("/trip-details/varanasi")}
               >
                 View Details
               </button>
@@ -109,7 +109,7 @@ function MyJourneys() {
           <div className="trip-card premium">
 
             <div className="trip-image">
-              <img src="/Images/Home_Img.png" alt="Taj Mahal" />
+              <img src="Images/taj_mahal.jpeg" alt="Taj Mahal" />
             </div>
 
             <div className="trip-info">
@@ -129,7 +129,7 @@ function MyJourneys() {
 
               <button
                 className="view-btn"
-                onClick={() => navigate("/description/taj")}
+                onClick={() => navigate("/trip-details/taj")}
               >
                 View Details
               </button>

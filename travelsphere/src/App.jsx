@@ -6,6 +6,7 @@ import Weather from "./Weather";
 import BudgetPlanner from "./BudgetPlanner";
 import BudgetResult from "./BudgetResult";
 import MyJourneys from "./MyJourneys";
+import TripDetails from "./TripDetails";
 import About from "./About";
 import Description from "./Description";
 import Booking from "./Booking";
@@ -46,6 +47,8 @@ function App() {
 
         <Route path="/journeys" element={<MyJourneys />} />
 
+        <Route path="/trip-details/:id" element={<TripDetails />} />
+        
         <Route path="/about" element={<About />} />
         
         <Route path="/description/:id" element={<Description />} />

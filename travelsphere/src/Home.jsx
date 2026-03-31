@@ -84,7 +84,7 @@ function Home() {
 
 
               <div className="card-img-container">
-                <img src="/Images/Home_Img.png" alt="Amber Fort" />
+                <img src="Images\amber_fort.png" alt="Amber Fort" />
               </div>
 
 
@@ -120,7 +120,7 @@ function Home() {
 
 
               <div className="card-img-container">
-                <img src="/Images/Home_Img.png" alt="Gateway of India" />
+                <img src="Images\gateway_of_India.png" alt="Gateway of India" />
               </div>
 
 
@@ -156,7 +156,7 @@ function Home() {
 
 
               <div className="card-img-container">
-                <img src="/Images/Home_Img.png" alt="Kashmir" />
+                <img src="Images\kashmir.png" alt="Kashmir" />
               </div>
 
 
@@ -200,7 +200,7 @@ function Home() {
           <div className="package">
 
 
-            <img src="/Images/Home_Img.png" alt="Ladakh" />
+            <img src="Images/ladakh.png" alt="Ladakh" />
 
 
             <div className="package-info">

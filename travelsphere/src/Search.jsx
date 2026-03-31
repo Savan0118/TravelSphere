@@ -18,20 +18,12 @@ function Search() {
     return (
 
         <div className="home">
-
-
-            {/* SIDEBAR */}
-            <Sidebar />
-
-
-
+        {/* SIDEBAR */}
+        <Sidebar />
             {/* MAIN */}
             <div className="main">
-
-
                 {/* BANNER */}
                 <div className="banner">
-
 
                     <div className="banner-text">
 
@@ -48,7 +40,6 @@ function Search() {
 
                     </div>
 
-
                     <img
                         src={profileImg}
                         className="profile"
@@ -56,10 +47,8 @@ function Search() {
                         style={{ cursor: "pointer" }}
                     />
 
-
                     {/* SEARCH BAR PILL */}
                     <div className="search-bar-pill">
-
 
                         <div className="search-pill-item">
                             <input
@@ -71,9 +60,7 @@ function Search() {
                             />
                         </div>
 
-
                         <div className="pill-divider"></div>
-
 
                         <div className="search-pill-item">
                             <input
@@ -84,9 +71,7 @@ function Search() {
                             />
                         </div>
 
-
                         <div className="pill-divider"></div>
-
 
                         <div className="search-pill-item">
                             <input
@@ -99,24 +84,18 @@ function Search() {
                             />
                         </div>
 
-
                         <button className="search-pill-btn">
 
                             Explore Now
 
                         </button>
 
-
                     </div>
-
 
                 </div>
 
-
-
                 {/* CONTENT */}
                 <div className="content-area">
-
 
                     {/* ✅ UPDATED TITLE */}
                     <h2 style={{
@@ -126,7 +105,6 @@ function Search() {
                     }}>
                         Explore Premium Travel Destinations
                     </h2>
-
 
                     {/* ✅ NEW PROFESSIONAL SUBTEXT */}
                     <p style={{
@@ -138,11 +116,8 @@ function Search() {
                         Use advanced search and filters to discover destinations that match your preferences, budget, and travel style.
                     </p>
 
-
-
                     {/* SEARCH BAR */}
                     <div className="top-search-bar-container">
-
                         <input
                             type="text"
                             placeholder="Search destinations, cities, landmarks..."
@@ -150,42 +125,30 @@ function Search() {
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                         />
-
                     </div>
 
-
-
                     <div className="search-categories">
-
-
                         <button className="search-cat-btn">
                             Scenic Villages
                         </button>
-
 
                         <button className="search-cat-btn">
                             Coastal Beaches
                         </button>
 
-
                         <button className="search-cat-btn">
                             Mountain Escapes
                         </button>
-
 
                         <button className="search-cat-btn">
                             Spiritual Places
                         </button>
 
-
                         <button className="search-cat-btn">
                             Explore More ˅
                         </button>
 
-
                     </div>
-
-
 
                     <div className="search-list">
 
@@ -196,7 +159,7 @@ function Search() {
                             <div className="package search-card">
 
 
-                                <img src="/Images/Home_Img.png" alt="Ladakh" />
+                                <img src="Images\ladakh.png" alt="Ladakh" />
 
 
                                 <div className="package-info">
@@ -247,7 +210,7 @@ function Search() {
                             <div className="package search-card">
 
 
-                                <img src="/Images/Home_Img.png" alt="Varanasi" />
+                                <img src="Images\varanasi.png" alt="Varanasi" />
 
 
                                 <div className="package-info">
@@ -298,7 +261,7 @@ function Search() {
                             <div className="package search-card">
 
 
-                                <img src="/Images/Home_Img.png" alt="Taj Mahal" />
+                                <img src="Images/taj_mahal.jpeg" alt="Taj Mahal" />
 
 
                                 <div className="package-info">
