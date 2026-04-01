@@ -1,84 +1,7 @@
-.admin-container {
-  display: flex;
-  height: 100vh;
-  background: #f4f6f8;
-}
-
-/* SIDEBAR SAME STYLE */
-.sidebar {
-  width: 260px;
-  background: linear-gradient(#0f5132, #198754);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.logo {
-  margin-bottom: 5px;
-}
-
-.tagline {
-  font-size: 12px;
-  opacity: 0.8;
-}
-
-.menu {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.menu li {
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.menu li:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-.menu .active {
-  background: rgba(255,255,255,0.3);
-}
-
-.logout {
-  cursor: pointer;
-  padding: 10px;
-}
-
-/* MAIN */
-.admin-main {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;   /* ⭐ SCROLLABLE AREA */
-}
-
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.banner {
-  background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-  color: white;
-  margin-bottom: 25px;
-}
-
-.profile {
-  width: 70px;
 }
 
 .add-btn {
@@ -95,6 +18,7 @@
   background: white;
   padding: 20px;
   border-radius: 12px;
+  overflow-x: auto;
 }
 
 table {
@@ -102,7 +26,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 14px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -125,4 +50,3 @@ th, td {
   border-radius: 6px;
   cursor: pointer;
 }
-

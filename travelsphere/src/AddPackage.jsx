@@ -1,129 +1,134 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./Home.css";
 import "./AddPackage.css";
 import { useNavigate } from "react-router-dom";
+import AdminSidebar from "./AdminSidebar";
 
 function AddPackage() {
 
   const navigate = useNavigate();
 
+  const [adminImage, setAdminImage] = useState(
+    localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+  );
+
+  useEffect(() => {
+    const handleProfileUpdate = () => {
+      setAdminImage(localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png");
+    };
+    window.addEventListener("adminProfileUpdated", handleProfileUpdate);
+    return () => window.removeEventListener("adminProfileUpdated", handleProfileUpdate);
+  }, []);
+
   return (
 
-    <div className="admin-container">
+    <div className="home">
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-
-        <div>
-          <h2>TravelSphere</h2>
-
-          <ul className="menu">
-            <li onClick={() => navigate("/admin")}>🏠 Dashboard</li>
-            <li onClick={() => navigate("/admin/packages")}>🔎 Packages</li>
-            <li onClick={() => navigate("/admin/bookings")}>💼 Bookings</li>
-            <li onClick={() => navigate("/admin/about")}>ℹ️ About</li>
-          </ul>
-        </div>
-
-        <div className="logout" onClick={() => navigate("/")}>
-          ⏻ Logout
-        </div>
-
-      </div>
+      <AdminSidebar />
 
 
       {/* MAIN */}
-      <div className="admin-main">
+      <div className="main">
 
         {/* BANNER */}
         <div className="banner">
-          <div>
+          <div className="banner-text">
             <h1>Create Travel Package</h1>
             <p>Design new travel experience</p>
           </div>
+          <img
+            src={adminImage}
+            className="profile"
+            alt="admin"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/profile")}
+          />
         </div>
 
+        <div className="content-area">
+          <div className="form-container">
 
-        <div className="form-container">
+            <h2>Create New Package</h2>
 
-          <h2>Create New Package</h2>
+            <div className="form-grid">
 
-          <div className="form-grid">
+              {/* LEFT COLUMN */}
+              <div className="form-card">
 
-            {/* LEFT COLUMN */}
-            <div className="form-card">
+                <label>Package Name</label>
+                <input type="text" />
 
-              <label>Package Name</label>
-              <input type="text" />
+                <label>Location</label>
+                <input type="text" placeholder="Enter location" />
 
-              <label>Location</label>
-              <input type="text" placeholder="Enter location" />
+                <label>Package Description</label>
+                <textarea rows="3"></textarea>
 
-              <label>Package Description</label>
-              <textarea rows="3"></textarea>
+                <label>Best Season</label>
+                <input type="text" placeholder="Example: Oct – Feb" />
 
-              <label>Best Season</label>
-              <input type="text" placeholder="Example: Oct – Feb" />
+                {/* ⭐ ITINERARY SECTION */}
+                <label>Day-wise Itinerary</label>
 
-              {/* ⭐ ITINERARY SECTION */}
-              <label>Day-wise Itinerary</label>
+                <div className="itinerary-box">
+                  <input placeholder="Day 1 details" />
+                  <input placeholder="Day 2 details" />
+                  <input placeholder="Day 3 details" />
+                  <input placeholder="Day 4 details" />
+                </div>
 
-              <div className="itinerary-box">
-                <input placeholder="Day 1 details" />
-                <input placeholder="Day 2 details" />
-                <input placeholder="Day 3 details" />
-                <input placeholder="Day 4 details" />
+                {/* ⭐ ADVENTURE SECTION */}
+                <label>Adventures / Extra Activities</label>
+
+                <div className="activity-box">
+                  <input placeholder="Example: River Rafting" />
+                  <input placeholder="Example: Paragliding" />
+                  <input placeholder="Example: Trekking" />
+                </div>
+
+                <label>Upload Package Image</label>
+                <input type="file" />
+
               </div>
 
-              {/* ⭐ ADVENTURE SECTION */}
-              <label>Adventures / Extra Activities</label>
 
-              <div className="activity-box">
-                <input placeholder="Example: River Rafting" />
-                <input placeholder="Example: Paragliding" />
-                <input placeholder="Example: Trekking" />
-              </div>
+              {/* RIGHT COLUMN */}
+              <div className="form-card">
 
-              <label>Upload Package Image</label>
-              <input type="file" />
+                <label>Duration (Days)</label>
+                <input type="number" />
 
-            </div>
+                <label>Price</label>
+                <input type="number" />
 
+                <label>Child Price</label>
+                <input type="number" />
 
-            {/* RIGHT COLUMN */}
-            <div className="form-card">
+                <label>Hotel Name</label>
+                <input type="text" />
 
-              <label>Duration (Days)</label>
-              <input type="number" />
+                <label>Room Type</label>
+                <input type="text" />
 
-              <label>Price</label>
-              <input type="number" />
+                <label>Meals Included</label>
+                <input type="text" placeholder="Example: Breakfast + Dinner" />
 
-              <label>Child Price</label>
-              <input type="number" />
+                <div className="btn-row">
+                  <button className="save" onClick={() => navigate("/admin/packages")} >Save Package</button>
+                  <button
+                    className="cancel"
+                    onClick={() => navigate("/admin/packages")}
+                  >
+                    Cancel
+                  </button>
+                </div>
 
-              <label>Hotel Name</label>
-              <input type="text" />
-
-              <label>Room Type</label>
-              <input type="text" />
-
-              <label>Meals Included</label>
-              <input type="text" placeholder="Example: Breakfast + Dinner" />
-
-              <div className="btn-row">
-                <button className="save" onClick={() => navigate("/admin/packages")} >Save Package</button>
-                <button
-                  className="cancel"
-                  onClick={() => navigate("/admin/packages")}
-                >
-                  Cancel
-                </button>
               </div>
 
             </div>
 
           </div>
-
         </div>
 
       </div>

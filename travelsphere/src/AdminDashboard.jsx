@@ -1,188 +1,168 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import "./AdminDashboard.css";
 import { useNavigate } from "react-router-dom";
+import AdminSidebar from "./AdminSidebar";
 
-function AdminDashboard(){
+function AdminDashboard() {
 
-const navigate = useNavigate();
+      const navigate = useNavigate();
 
-return(
+      const [adminImage, setAdminImage] = useState(
+            localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+      );
 
-<div className="home">
+      useEffect(() => {
+            const handleProfileUpdate = () => {
+                  setAdminImage(localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png");
+            };
+            window.addEventListener("adminProfileUpdated", handleProfileUpdate);
+            return () => window.removeEventListener("adminProfileUpdated", handleProfileUpdate);
+      }, []);
 
-{/* SIDEBAR */}
-<div className="sidebar">
+      return (
 
-<div className="sidebar-top">
+            <div className="home">
 
-<h2 className="logo">TravelSphere</h2>
-
-<p className="tagline">
-Your best companion to travel around the world
-</p>
-
-<ul className="menu">
-
-<li className="active">🏠 Dashboard</li>
-
-<li onClick={()=>navigate("/admin/packages")}>
-🔎 Packages
-</li>
-
-<li onClick={()=>navigate("/admin/bookings")}>
-💼 Bookings
-</li>
-
-<li onClick={()=>navigate("/about")}>
-ℹ️ About Us
-</li>
-
-</ul>
-
-</div>
-
-<div className="logout-container">
-<div className="logout" onClick={()=>navigate("/")}>
-⏻ Log Out
-</div>
-</div>
-
-</div>
+                  {/* SIDEBAR */}
+                  <AdminSidebar />
 
 
-{/* MAIN */}
-<div className="main">
+                  {/* MAIN */}
+                  <div className="main">
 
-{/* BANNER */}
-<div className="banner admin-banner">
+                        {/* BANNER */}
+                        <div className="banner">
 
-<div className="banner-text">
-<h1>Plan your packages for the world</h1>
-<p>Welcome Back! Admin</p>
-</div>
+                              <div className="banner-text">
+                                    <h1>Plan your packages for the world</h1>
+                                    <p>Welcome Back! Admin</p>
+                              </div>
 
-<img
-src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
-className="profile"
-/>
+                              <img
+                                    src={adminImage}
+                                    className="profile"
+                                    alt="admin"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => navigate("/admin/profile")}
+                              />
 
-</div>
-
-
-{/* CONTENT */}
-<div className="content-area">
-
-{/* STATS */}
-<div className="admin-stats">
-
-<div className="stat-card">
-<p>Total Packages</p>
-<h2>24</h2>
-</div>
-
-<div className="stat-card">
-<p>Total Destinations</p>
-<h2>24</h2>
-</div>
-
-<div className="stat-card">
-<p>Total Bookings</p>
-<h2>24</h2>
-</div>
-
-</div>
+                        </div>
 
 
-{/* BOOKINGS + ACTION */}
-<div className="admin-layout">
+                        {/* CONTENT */}
+                        <div className="content-area">
 
-{/* TABLE */}
-<div className="booking-table">
+                              {/* STATS */}
+                              <div className="admin-stats">
 
-<h2>Recent Bookings</h2>
+                                    <div className="stat-card">
+                                          <p>Total Packages</p>
+                                          <h2>24</h2>
+                                    </div>
 
-<table>
+                                    <div className="stat-card">
+                                          <p>Total Destinations</p>
+                                          <h2>24</h2>
+                                    </div>
 
-<thead>
-<tr>
-<th>User</th>
-<th>Package</th>
-<th>Persons</th>
-<th>Payment Status</th>
-</tr>
-</thead>
+                                    <div className="stat-card">
+                                          <p>Total Bookings</p>
+                                          <h2>24</h2>
+                                    </div>
 
-<tbody>
-
-<tr>
-<td>Rina Shah</td>
-<td>Ladakh Adventure Tour</td>
-<td>5</td>
-<td>₹ 3,50,000</td>
-</tr>
-
-<tr>
-<td>Amit Varma</td>
-<td>Varanasi Spiritual Tour</td>
-<td>4</td>
-<td>₹ 56,000</td>
-</tr>
-
-<tr>
-<td>Adna Patel</td>
-<td>Manali Adventure Trip</td>
-<td>10</td>
-<td>₹ 1,20,000</td>
-</tr>
-
-<tr>
-<td>Sneha Roy</td>
-<td>Taj Mahal Weekend Trip</td>
-<td>3</td>
-<td>₹ 75,000</td>
-</tr>
-
-<tr>
-<td>Krish Banerjee</td>
-<td>Kerala Backwater Trip</td>
-<td>6</td>
-<td>₹ 4,56,000</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
+                              </div>
 
 
-{/* ACTION BUTTONS */}
-<div className="admin-actions">
+                              {/* BOOKINGS + ACTION */}
+                              <div className="admin-layout">
 
-<button onClick={()=>navigate("/admin/add")}>
-Add Package
-</button>
+                                    {/* TABLE */}
+                                    <div className="booking-table">
 
-<button onClick={()=>navigate("/admin/packages")}>
-View Packages
-</button>
+                                          <h2>Recent Bookings</h2>
 
-<button onClick={()=>navigate("/admin/bookings")}>
-View all Bookings
-</button>
+                                          <table>
 
-</div>
+                                                <thead>
+                                                      <tr>
+                                                            <th>User</th>
+                                                            <th>Package</th>
+                                                            <th>Persons</th>
+                                                            <th>Payment Status</th>
+                                                      </tr>
+                                                </thead>
 
-</div>
+                                                <tbody>
 
-</div>
+                                                      <tr>
+                                                            <td>Rina Shah</td>
+                                                            <td>Ladakh Adventure Tour</td>
+                                                            <td>5</td>
+                                                            <td>₹ 3,50,000</td>
+                                                      </tr>
 
-</div>
+                                                      <tr>
+                                                            <td>Amit Varma</td>
+                                                            <td>Varanasi Spiritual Tour</td>
+                                                            <td>4</td>
+                                                            <td>₹ 56,000</td>
+                                                      </tr>
 
-</div>
+                                                      <tr>
+                                                            <td>Adna Patel</td>
+                                                            <td>Manali Adventure Trip</td>
+                                                            <td>10</td>
+                                                            <td>₹ 1,20,000</td>
+                                                      </tr>
 
-)
+                                                      <tr>
+                                                            <td>Sneha Roy</td>
+                                                            <td>Taj Mahal Weekend Trip</td>
+                                                            <td>3</td>
+                                                            <td>₹ 75,000</td>
+                                                      </tr>
+
+                                                      <tr>
+                                                            <td>Krish Banerjee</td>
+                                                            <td>Kerala Backwater Trip</td>
+                                                            <td>6</td>
+                                                            <td>₹ 4,56,000</td>
+                                                      </tr>
+
+                                                </tbody>
+
+                                          </table>
+
+                                    </div>
+
+
+                                    {/* ACTION BUTTONS */}
+                                    <div className="admin-actions">
+
+                                          <button onClick={() => navigate("/admin/add")}>
+                                                Add Package
+                                          </button>
+
+                                          <button onClick={() => navigate("/admin/packages")}>
+                                                View Packages
+                                          </button>
+
+                                          <button onClick={() => navigate("/admin/bookings")}>
+                                                View all Bookings
+                                          </button>
+
+                                    </div>
+
+                              </div>
+
+                        </div>
+
+                  </div>
+
+            </div>
+
+      )
 
 }
 

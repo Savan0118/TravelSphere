@@ -1,140 +1,121 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./Home.css";
 import "./AdminPackages.css";
 import { useNavigate } from "react-router-dom";
+import AdminSidebar from "./AdminSidebar";
 
 function AdminPackages() {
 
   const navigate = useNavigate();
 
+  const [adminImage, setAdminImage] = useState(
+    localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+  );
+
+  useEffect(() => {
+    const handleProfileUpdate = () => {
+      setAdminImage(localStorage.getItem("adminProfileImage") || "https://cdn-icons-png.flaticon.com/512/4140/4140048.png");
+    };
+    window.addEventListener("adminProfileUpdated", handleProfileUpdate);
+    return () => window.removeEventListener("adminProfileUpdated", handleProfileUpdate);
+  }, []);
+
   return (
 
-    <div className="admin-container">
+    <div className="home">
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-
-        <div className="sidebar-top">
-
-          <h2 className="logo">TravelSphere</h2>
-
-          <p className="tagline">
-            Your best companion to travel around the world
-          </p>
-
-          <ul className="menu">
-
-            <li onClick={() => navigate("/admin")}>
-              🏠 Dashboard
-            </li>
-
-            <li className="active">
-              🔎 Packages
-            </li>
-
-            <li onClick={() => navigate("/admin/bookings")}>
-              💼 Bookings
-            </li>
-
-            <li onClick={() => navigate("/admin/about")}>
-              ℹ️ About Us
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div className="logout-container">
-          <div className="logout" onClick={() => navigate("/")}>
-            ⏻ Log Out
-          </div>
-        </div>
-
-      </div>
+      <AdminSidebar />
 
 
       {/* MAIN AREA */}
-      <div className="admin-main">
+      <div className="main">
 
-        <div className="banner admin-banner">
+        <div className="banner">
 
-        <div className="banner-text">
+          <div className="banner-text">
             <h1>Plan your packages for the world</h1>
             <p>Welcome Back! Admin</p>
-        </div>
+          </div>
 
-        <img
-            src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+          <img
+            src={adminImage}
             className="profile"
-        />
+            alt="admin"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/profile")}
+          />
 
         </div>
 
-        <div className="admin-header">
-          <h1>Manage Packages</h1>
+        <div className="content-area">
+          <div className="admin-header">
+            <h1>Manage Packages</h1>
 
-          <button
-            className="add-btn"
-            onClick={() => navigate("/admin/add")}
-          >
-            Add New Package
-          </button>
-        </div>
+            <button
+              className="add-btn"
+              onClick={() => navigate("/admin/add")}
+            >
+              Add New Package
+            </button>
+          </div>
 
 
-        {/* TABLE */}
-        <div className="table-container">
+          {/* TABLE */}
+          <div className="table-container">
 
-          <table>
+            <table>
 
-            <thead>
-              <tr>
-                <th>Package Name</th>
-                <th>Location</th>
-                <th>Duration</th>
-                <th>Price</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
+              <thead>
+                <tr>
+                  <th>Package Name</th>
+                  <th>Location</th>
+                  <th>Duration</th>
+                  <th>Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
 
-            <tbody>
+              <tbody>
 
-              <tr>
-                <td>Ladakh Adventure Tour</td>
-                <td>Ladakh</td>
-                <td>7 Days</td>
-                <td>₹ 3,50,000</td>
-                <td>
-                  <button className="edit">Edit</button>
-                  <button className="delete">Delete</button>
-                </td>
-              </tr>
+                <tr>
+                  <td>Ladakh Adventure Tour</td>
+                  <td>Ladakh</td>
+                  <td>7 Days</td>
+                  <td>₹ 3,50,000</td>
+                  <td>
+                    <button className="edit">Edit</button>
+                    <button className="delete">Delete</button>
+                  </td>
+                </tr>
 
-              <tr>
-                <td>Manali Trip</td>
-                <td>Himachal</td>
-                <td>5 Days</td>
-                <td>₹ 1,20,000</td>
-                <td>
-                  <button className="edit">Edit</button>
-                  <button className="delete">Delete</button>
-                </td>
-              </tr>
+                <tr>
+                  <td>Manali Trip</td>
+                  <td>Himachal</td>
+                  <td>5 Days</td>
+                  <td>₹ 1,20,000</td>
+                  <td>
+                    <button className="edit">Edit</button>
+                    <button className="delete">Delete</button>
+                  </td>
+                </tr>
 
-              <tr>
-                <td>Kerala Tour</td>
-                <td>Kerala</td>
-                <td>6 Days</td>
-                <td>₹ 90,000</td>
-                <td>
-                  <button className="edit">Edit</button>
-                  <button className="delete">Delete</button>
-                </td>
-              </tr>
+                <tr>
+                  <td>Kerala Tour</td>
+                  <td>Kerala</td>
+                  <td>6 Days</td>
+                  <td>₹ 90,000</td>
+                  <td>
+                    <button className="edit">Edit</button>
+                    <button className="delete">Delete</button>
+                  </td>
+                </tr>
 
-            </tbody>
+              </tbody>
 
-          </table>
+            </table>
 
+          </div>
         </div>
 
       </div>
