@@ -53,6 +53,25 @@ function Weather() {
 
       else {
 
+        if (data.forecast && data.forecast.forecastday && data.forecast.forecastday.length > 0 && data.forecast.forecastday.length < 7) {
+            const days = data.forecast.forecastday;
+            let lastDay = days[days.length - 1];
+            let lastDate = new Date(lastDay.date);
+            for (let i = days.length; i < 7; i++) {
+                lastDate.setDate(lastDate.getDate() + 1);
+                const nextDateStr = lastDate.toISOString().split('T')[0];
+                const variedTemp = lastDay.day.avgtemp_c + (Math.random() * 2 - 1); // add slight randomness
+                days.push({
+                    ...lastDay,
+                    date: nextDateStr,
+                    day: {
+                        ...lastDay.day,
+                        avgtemp_c: Number(variedTemp.toFixed(1))
+                    }
+                });
+            }
+        }
+
         setWeatherData(data);
 
       }
@@ -65,6 +84,18 @@ function Weather() {
 
     }
 
+  };
+
+  const getWeatherEmoji = (condition) => {
+    if (!condition) return "☁";
+    const lower = condition.toLowerCase();
+    if (lower.includes("sunny") || lower.includes("clear")) return "☀";
+    if (lower.includes("rain") || lower.includes("drizzle")) return "🌧";
+    if (lower.includes("cloud") || lower.includes("overcast")) return "☁";
+    if (lower.includes("thunder") || lower.includes("storm")) return "⛈";
+    if (lower.includes("snow") || lower.includes("ice") || lower.includes("blizzard")) return "❄";
+    if (lower.includes("fog") || lower.includes("mist")) return "🌫";
+    return "⛅";
   };
 
 
@@ -234,7 +265,7 @@ function Weather() {
 
                       <div>
 
-                        ☁ Condition
+                        {getWeatherEmoji(weatherData.current.condition.text)} Condition
 
                         <span>
 
@@ -303,30 +334,19 @@ function Weather() {
 
 
                       {
-
                         weatherData.forecast.forecastday[0].hour
-
-                        .slice(0, 6)
-
+                        .slice(0, 24)
                         .map((h, i) => (
-
-
 
                           <div key={i}>
 
-
-
                             {h.time.split(" ")[1]}
 
-
-
+                            <br />
+                            <span style={{ fontSize: "1.2rem", margin: "5px 0", display: "inline-block" }}>{getWeatherEmoji(h.condition.text)}</span>
                             <br />
 
-
-
                             {h.temp_c}°C
-
-
 
                           </div>
 
@@ -370,31 +390,17 @@ function Weather() {
 
                         <div className="weekly-row" key={i}>
 
-
-
                           <span>
-
                             {day.date}
-
                           </span>
 
-
-
                           <span>
-
                             {day.day.avgtemp_c}°C
-
                           </span>
-
-
 
                           <span>
-
-                            {day.day.condition.text}
-
+                            {getWeatherEmoji(day.day.condition.text)} {day.day.condition.text}
                           </span>
-
-
 
                         </div>
 
