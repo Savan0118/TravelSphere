@@ -15,12 +15,8 @@ function Register() {
 
   const handleOK = () => {
 
-    // ⭐ ROLE BASED REDIRECT AFTER REGISTER
-    if (role === "Admin") {
-      navigate("/admin");
-    } else {
-      navigate("/home");
-    }
+    // Redirect to login page after successful registration
+    navigate("/");
 
   };
 
