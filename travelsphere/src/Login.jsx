@@ -73,7 +73,7 @@ function Login() {
           <input type="password" placeholder="Enter your password" />
         </div>
 
-        <div className="forgot">
+        <div className="forgot" onClick={() => navigate("/forgot-password")}>
           Forgot Password?
         </div>
 
