@@ -62,6 +62,16 @@ function AddPackage() {
                 <label>Location</label>
                 <input type="text" placeholder="Enter location" />
 
+                <label>Type of Destination</label>
+                <select style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px", border: "1px solid #ccc", outline: "none", fontSize: "14px" }}>
+                  <option value="">Select Type</option>
+                  <option value="Scenic Villages">Scenic Villages</option>
+                  <option value="Coastal Beaches">Coastal Beaches</option>
+                  <option value="Mountain Escapes">Mountain Escapes</option>
+                  <option value="Spiritual Places">Spiritual Places</option>
+                  <option value="Explore More">Explore More</option>
+                </select>
+
                 <label>Package Description</label>
                 <textarea rows="3"></textarea>
 
@@ -113,6 +123,9 @@ function AddPackage() {
 
                 <label>Meals Included</label>
                 <input type="text" placeholder="Example: Breakfast + Dinner" />
+
+                <label>Available Seats</label>
+                <input type="number" placeholder="Example: 10" />
 
                 <div className="btn-row">
                   <button className="save" onClick={() => navigate("/admin/packages")} >Save Package</button>

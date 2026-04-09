@@ -165,7 +165,7 @@ function Weather() {
 
 
 
-          <div className="weather-layout" style={{ display: "block" }}>
+          <div className="weather-layout">
 
 
 
@@ -364,13 +364,18 @@ function Weather() {
 
                   </div>
 
+                </>
 
+              )}
 
+            </div>
 
-
+            <div className="weather-right">
+              {weatherData && (
+                 <>
                   {/* WEEKLY FORECAST */}
 
-                  <div className="weather-card">
+                  <div className="weather-card" style={{ marginTop: "0" }}>
 
 
 
@@ -413,15 +418,8 @@ function Weather() {
 
 
                   </div>
-
-
-
-                </>
-
+                 </>
               )}
-
-
-
             </div>
 
 

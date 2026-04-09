@@ -11,7 +11,9 @@ function Search() {
     /* ✅ ADDED STATE */
     const [searchText, setSearchText] = useState("");
     const [travelDate, setTravelDate] = useState("");
-    const [guests, setGuests] = useState("");
+    const [days, setDays] = useState("");
+    const [budget, setBudget] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("All");
 
     const profileImg = localStorage.getItem("profileImage") || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
@@ -53,9 +55,9 @@ function Search() {
                         <div className="search-pill-item">
                             <input
                                 type="text"
-                                placeholder="Choose Destination"
-                                value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)}
+                                placeholder="Budget"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
                                 style={{ border: "none", background: "transparent", outline: "none", fontWeight: "600", color: "#1a1a1a", fontSize: "13px", width: "135px" }}
                             />
                         </div>
@@ -77,9 +79,9 @@ function Search() {
                             <input
                                 type="number"
                                 min="1"
-                                placeholder="Guests"
-                                value={guests}
-                                onChange={(e) => setGuests(e.target.value)}
+                                placeholder="Days"
+                                value={days}
+                                onChange={(e) => setDays(e.target.value)}
                                 style={{ border: "none", background: "transparent", outline: "none", fontWeight: "600", color: "#1a1a1a", fontSize: "13px", width: "80px" }}
                             />
                         </div>
@@ -128,23 +130,23 @@ function Search() {
                     </div>
 
                     <div className="search-categories">
-                        <button className="search-cat-btn">
+                        <button className={`search-cat-btn ${selectedCategory === "Scenic Villages" ? "active-cat" : ""}`} onClick={() => setSelectedCategory("Scenic Villages")}>
                             Scenic Villages
                         </button>
 
-                        <button className="search-cat-btn">
+                        <button className={`search-cat-btn ${selectedCategory === "Coastal Beaches" ? "active-cat" : ""}`} onClick={() => setSelectedCategory("Coastal Beaches")}>
                             Coastal Beaches
                         </button>
 
-                        <button className="search-cat-btn">
+                        <button className={`search-cat-btn ${selectedCategory === "Mountain Escapes" ? "active-cat" : ""}`} onClick={() => setSelectedCategory("Mountain Escapes")}>
                             Mountain Escapes
                         </button>
 
-                        <button className="search-cat-btn">
+                        <button className={`search-cat-btn ${selectedCategory === "Spiritual Places" ? "active-cat" : ""}`} onClick={() => setSelectedCategory("Spiritual Places")}>
                             Spiritual Places
                         </button>
 
-                        <button className="search-cat-btn">
+                        <button className={`search-cat-btn ${selectedCategory === "Explore More" ? "active-cat" : ""}`} onClick={() => setSelectedCategory("All")}>
                             Explore More ˅
                         </button>
 
@@ -154,7 +156,7 @@ function Search() {
 
 
                         {/* CARD 1 */}
-                        {("ladakh".includes(searchText.toLowerCase()) || searchText === "") && (
+                        {("ladakh".includes(searchText.toLowerCase()) || searchText === "") && (selectedCategory === "All" || selectedCategory === "Mountain Escapes") && (
 
                             <div className="package search-card">
 
@@ -182,6 +184,8 @@ function Search() {
 
                                             <span>7 days</span>
 
+                                            <span>5 Seats Left</span>
+
                                             <span>₹70,000</span>
 
                                         </div>
@@ -205,7 +209,7 @@ function Search() {
 
 
                         {/* CARD 2 */}
-                        {("varanasi".includes(searchText.toLowerCase()) || searchText === "") && (
+                        {("varanasi".includes(searchText.toLowerCase()) || searchText === "") && (selectedCategory === "All" || selectedCategory === "Spiritual Places") && (
 
                             <div className="package search-card">
 
@@ -233,6 +237,8 @@ function Search() {
 
                                             <span>5 days</span>
 
+                                            <span>10 Seats Left</span>
+
                                             <span>₹14,000</span>
 
                                         </div>
@@ -256,7 +262,7 @@ function Search() {
 
 
                         {/* CARD 3 */}
-                        {("taj mahal".includes(searchText.toLowerCase()) || searchText === "") && (
+                        {("taj mahal".includes(searchText.toLowerCase()) || searchText === "") && (selectedCategory === "All" || selectedCategory === "Explore More") && (
 
                             <div className="package search-card">
 
@@ -283,6 +289,8 @@ function Search() {
                                         <div className="price-tag">
 
                                             <span>2 days</span>
+
+                                            <span>2 Seats Left</span>
 
                                             <span>₹2500</span>
 
