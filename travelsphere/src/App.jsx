@@ -20,7 +20,7 @@ import Profile from "./Profile";
 import EditProfile from "./EditProfile";
 import AdminProfile from "./AdminProfile";
 import EditAdminProfile from "./EditAdminProfile";
-
+import Wishlist from "./Wishlist";
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -76,6 +76,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/edit-profile" element={<EditProfile />} />
+
+        
 
       </Routes>
 
