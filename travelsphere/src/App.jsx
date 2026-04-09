@@ -21,16 +21,39 @@ import EditProfile from "./EditProfile";
 import AdminProfile from "./AdminProfile";
 import EditAdminProfile from "./EditAdminProfile";
 import Wishlist from "./Wishlist";
+import CalendarView from "./CalendarView";
 
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+function ThemeManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const isAdmin = location.pathname.startsWith("/admin");
+    const themeKey = isAdmin ? "admin_theme" : "theme";
+    const isDark = localStorage.getItem(themeKey) === "dark";
+    document.body.classList.toggle("dark-theme", isDark);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      const isAdmin = window.location.pathname.startsWith("/admin");
+      const themeKey = isAdmin ? "admin_theme" : "theme";
+      const darkToggle = localStorage.getItem(themeKey) === "dark";
+      document.body.classList.toggle("dark-theme", darkToggle);
+    };
+    window.addEventListener("themeChanged", handleThemeChange);
+    return () => window.removeEventListener("themeChanged", handleThemeChange);
+  }, []);
+
+  return null;
+}
 
 function App() {
-
   return (
-
     <BrowserRouter>
-
+      <ThemeManager />
       <Routes>
 
         <Route path="/" element={<Login />} />
@@ -42,7 +65,8 @@ function App() {
         <Route path="/home" element={<Home />} />
 
         <Route path="/search" element={<Search />} />
-
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/calendar" element={<CalendarView />} />
         <Route path="/weather" element={<Weather />} />
 
         <Route path="/budget" element={<BudgetPlanner />} />
@@ -76,8 +100,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/edit-profile" element={<EditProfile />} />
-
-        
 
       </Routes>
 
