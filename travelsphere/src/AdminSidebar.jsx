@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Home.css";
 
@@ -7,7 +7,16 @@ function AdminSidebar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [isDark, setIsDark] = useState(localStorage.getItem("admin_theme") === "dark");
+
   const isActive = (path) => location.pathname === path;
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem("admin_theme", newTheme ? "dark" : "light");
+    window.dispatchEvent(new Event("themeChanged"));
+  };
 
   return (
     <div className="sidebar">
@@ -62,8 +71,13 @@ function AdminSidebar() {
       </div>
 
       <div className="logout-container">
+        <ul className="menu" style={{ marginBottom: "10px" }}>
+          <li onClick={toggleTheme}>
+            <span className="emoji-icon">{isDark ? "☀️" : "🌙"}</span> {isDark ? "Light Mode" : "Dark Mode"}
+          </li>
+        </ul>
         <div className="logout" onClick={() => navigate("/")}>
-          ⏻ Log Out
+          <span className="emoji-icon">⏻</span>Log Out
         </div>
       </div>
 

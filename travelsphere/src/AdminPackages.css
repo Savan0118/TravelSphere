@@ -50,3 +50,13 @@ td {
   border-radius: 6px;
   cursor: pointer;
 }
+
+/* --- DARK THEME OVERRIDES --- */
+body.dark-theme .table-container {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  color: #e6e6e6;
+}
+body.dark-theme .table-container th,
+body.dark-theme .table-container td { border-bottom: 1px solid #444; color: #e6e6e6; }
+body.dark-theme .admin-header h2 { color: #e6e6e6; }

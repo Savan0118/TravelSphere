@@ -124,3 +124,18 @@
 .activity-box input {
   margin-top: 8px;
 }
+
+/* --- DARK THEME OVERRIDES --- */
+body.dark-theme .form-container {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  color: #e6e6e6;
+}
+body.dark-theme .form-card { background: rgba(255, 255, 255, 0.05); }
+body.dark-theme .form-card label { color: #e6e6e6; }
+body.dark-theme .form-card input,
+body.dark-theme .form-card select,
+body.dark-theme .form-card textarea {
+  background: rgba(0,0,0,0.2); color: white; border: 1px solid #444;
+}
+body.dark-theme .cancel { background: #444; color: white; }

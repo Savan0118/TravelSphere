@@ -63,3 +63,13 @@ td {
   text-align: center;
   box-sizing: border-box;
 }
+
+/* --- DARK THEME OVERRIDES --- */
+body.dark-theme .booking-container {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  color: #e6e6e6;
+}
+body.dark-theme .booking-container th,
+body.dark-theme .booking-container td { border-bottom: 1px solid #444; color: #e6e6e6; }
+body.dark-theme .search { background: #2a2a2a; color: white; border: 1px solid #444; }

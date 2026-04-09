@@ -81,3 +81,28 @@
 .admin-actions button:hover {
     background: #1a4f36;
 }
+
+/* --- DARK THEME OVERRIDES --- */
+body.dark-theme .stat-card {
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    color: #e6e6e6;
+}
+body.dark-theme .stat-card p {
+    color: #a0a0a0;
+}
+body.dark-theme .stat-card h2 {
+    color: #e6e6e6;
+}
+
+body.dark-theme .booking-table {
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    color: #e6e6e6;
+}
+body.dark-theme .booking-table th {
+    border-bottom: 1px solid #444;
+}
+body.dark-theme .booking-table td {
+    border-bottom: 1px solid #333;
+}
