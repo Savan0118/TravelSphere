@@ -260,9 +260,24 @@
 
 
 .top-search-bar:focus {
-
     border-color: #2a8153;
+}
 
+/* --- DARK THEME OVERRIDES --- */
+body.dark-theme .search-bar-pill,
+body.dark-theme .top-search-bar {
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    color: #e6e6e6;
+    border-color: #444;
+}
+
+body.dark-theme .pill-divider {
+    background-color: #444;
+}
+
+body.dark-theme .search-pill-item {
+    color: #e6e6e6;
 }
 
 /* This is Search.css */

@@ -64,6 +64,7 @@ html, body {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
+  color: black;
 
 }
 
@@ -274,5 +275,7 @@ html, body {
   cursor: pointer;
 
 }
+
+/* Disabled dark mode overrides */
 
 /* This is Register.css */

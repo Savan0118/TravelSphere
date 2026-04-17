@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Description.css";
 import "./Home.css";
-import Sidebar from "./Sidebar";   // ✅ ADDED
+import Sidebar from "./Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
+import { User } from "lucide-react";
 
 function Description() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [reviews] = useState(() => JSON.parse(localStorage.getItem(`reviews_${id}`) || "[]"));
 
   const packages = {
     ladakh: {
@@ -225,7 +227,6 @@ function Description() {
   return (
     <div className="home">
 
-      {/* ✅ SIDEBAR COMPONENT */}
       <Sidebar />
 
       <div className="main">
@@ -269,6 +270,28 @@ function Description() {
               <p>🌍 Incredible India Tours</p>
               <p>📞 +91 9876543210</p>
               <p>📧 info@indiatours.com</p>
+
+              <hr style={{ margin: "30px 0", borderTop: "1px solid rgba(0,0,0,0.1)" }} />
+
+              <h3 className="highlight">Traveller Reviews</h3>
+              {reviews.length === 0 ? <p style={{ color: "var(--text-muted)", fontSize: "14px" }}>No reviews yet. Be the first to review after your trip!</p> : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '15px' }}>
+                  {reviews.map((r, i) => (
+                    <div key={i} style={{ padding: '15px', borderRadius: '10px', background: 'var(--bg-card)', border: '1px solid rgba(0,0,0,0.1)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', fontSize: '14px', color: 'var(--text-main)' }}>
+                          <User size={16} /> {r.name}
+                        </div>
+                        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{r.date}</span>
+                      </div>
+                      <div style={{ color: '#ffc107', marginBottom: '8px', fontSize: '12px' }}>
+                        {"★".repeat(r.rating)}{"☆".repeat(5-r.rating)}
+                      </div>
+                      <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-desc)', lineHeight: '1.4' }}>{r.comment}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
 
             </div>
           </div>

@@ -69,6 +69,11 @@ function Booking() {
   const totalCost = travellers.length * data.price;
 
   const handleSubmit = () => {
+    const notes = JSON.parse(localStorage.getItem('notifications') || '[]');
+    notes.unshift({ msg: `Booking confirmed for ${data.name}! Your request for ${travellers.length} travellers is being processed.` });
+    localStorage.setItem('notifications', JSON.stringify(notes));
+    window.dispatchEvent(new Event('storage'));
+    
     alert("Booking Request Sent ✅\nAdmin will contact you soon.");
     navigate("/journeys");
   };
